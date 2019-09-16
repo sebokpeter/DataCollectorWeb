@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>main_page</servlet-name>
+        <servlet-class>seacon.datacollectorweb.main_page</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>descriptor_servlet</servlet-name>
+        <servlet-class>seacon.datacollectorweb.descriptor_servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>descriptor_save_servlet</servlet-name>
+        <servlet-class>seacon.datacollectorweb.descriptor_save_servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>node_add_servlet</servlet-name>
+        <servlet-class>seacon.datacollectorweb.opc_conf_servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>process_output_display</servlet-name>
+        <servlet-class>seacon.datacollectorweb.process_output_display</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>main_page</servlet-name>
+        <url-pattern>/main_page</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>descriptor_servlet</servlet-name>
+        <url-pattern>/descriptor_servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>descriptor_save_servlet</servlet-name>
+        <url-pattern>/descriptor_save_servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>node_add_servlet</servlet-name>
+        <url-pattern>/node_add_servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>process_output_display</servlet-name>
+        <url-pattern>/process_output_display</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>main_page</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+</web-app>
