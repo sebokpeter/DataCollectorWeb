@@ -7,6 +7,7 @@ entity\Descriptor.class
 seacon\datacollectorweb\sqlconf_servlet.class
 entity\DescriptorConn.class
 seacon\datacollectorweb\process_output_display.class
+entity\ProcessOutputPrinter.class
 entity\OPCConf.class
 seacon\datacollectorweb\descriptor_servlet.class
 seacon\datacollectorweb\opc_conf_servlet.class
