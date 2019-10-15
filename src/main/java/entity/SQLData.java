@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 import java.io.Serializable;
@@ -14,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- *
+ * Represent data used to connect to the MSSQL database 
  * @author Peter
  */
 @Entity
@@ -26,12 +21,12 @@ public class SQLData implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private String name;
-    private String password;
-    private String dbName;
-    private String dbAddress;
-    private int dbPort;
-    private int connID;
+    private String name; // Username used to connect to the MSSQL server
+    private String password; // Password used to connect to the MSSQL server
+    private String dbName; // MSSQL database name
+    private String dbAddress; // MSSQL database address
+    private int dbPort; // MSSQL database port
+    private int connID; // Connection to the DESCRIPTOR_CONN table
 
     public int getConnID() {
         return connID;

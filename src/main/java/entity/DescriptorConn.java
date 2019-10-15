@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 /**
- * TODO: better name
+ * Used to connect a group of descriptors
+ * TODO: find a better name
  * @author Peter
  */
 public class DescriptorConn {
     int id;
-    String name;
-    String tableName;
+    String name; // Identifying name
+    String tableName; // Target database table name
 
     public int getId() {
         return id;

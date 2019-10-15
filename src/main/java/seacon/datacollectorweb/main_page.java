@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package seacon.datacollectorweb;
 
 import DAL.DataAccess;
@@ -26,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 public class main_page extends HttpServlet {
 
     private final DataAccess dataAccess = new DataAccess();
-    private final String DATA_COLLECTOR_PATH = "C:\\Users\\Peter\\Documents\\NetBeansProjects\\DataCollectorDesktop\\target\\DataCollector-jar-with-dependencies.jar"; // Path of the application, testing purposes only
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -86,6 +80,8 @@ public class main_page extends HttpServlet {
             out.println("</table>");
             out.println("<h2><a href=\"sqlconf_servlet\">Add New Configuration</a></h2>\n");
             
+            
+            // Build a form for selecting OPC configurations
             out.println("<table border=\"1\">");
             out.println("<tr>");
             out.println("<td>ID</td>");

@@ -1,23 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 /**
  * Relationship mapping between data provided by an OPC server and a database table;
+ * TODO: better name
  * @author Peter
  */
 public class Descriptor {
     private int id; 
     private int D_ID; // ID of the connection between the SQL data and the descriptor
-    private String db_field; // Associated field in the database
+    private String db_field; // Associated field in the database (unused)
     private String type; // Datatype of the recieved data
-    private int nameSpace;
-    private String nodeId;
-    private String idType;
-    private int itemOrder; 
+    private int nameSpace; // OPC server namespace 
+    private String nodeId; // OPC server NodeID
+    private String idType; // OPC server NodeID type
+    private int itemOrder; // Order of items in the target database (unused)
 
     
     public int getId() {

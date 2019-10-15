@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAL;
 
 import entity.Descriptor;
@@ -171,6 +166,10 @@ public class DataAccess {
         return key;
     }
     
+    /**
+     * Retrieve all descriptors
+     * @return A list of descriptors
+     */
     public List<DescriptorConn> getDescriptors() {
         List<DescriptorConn> descriptors = new ArrayList<>();
         
@@ -225,6 +224,11 @@ public class DataAccess {
         return null;
     }
     
+    /**
+     * Save a given descriptor to the H2 database
+     * @param d The descriptor that will be saved
+     * @return True if the descriptor was saved (the number of modified rows is 1), false otherwise.
+     */
     public boolean saveDescriptor(Descriptor d) {
         try (
             Connection conn = ds.getConnection();
@@ -291,6 +295,10 @@ public class DataAccess {
         return true;
     }
     
+    /**
+     * Retrieve a list of OPC configurations
+     * @return THe OPC configurations saved in the database.
+     */
     public List<OPCConf> getOPCConfigurations() {
         List<OPCConf> configs = new ArrayList<>();
         

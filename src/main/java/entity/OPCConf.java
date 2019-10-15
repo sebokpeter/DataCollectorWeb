@@ -1,22 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 /**
- *
+ * Data used to connect to the OPC-UA server
  * @author Peter
  */
 public class OPCConf {
     
-    private int id;
-    private String url;
-    private String name;
-    private String userName;
-    private String password;
-    private boolean anonymous;
+    private int id; 
+    private String url; // OPC-UA server URL
+    private String name; // OPC-UA server name
+    private String userName; // OPC-UA username (if anonymous connection is not possible)
+    private String password; // OPC-UA password (if anonymous connection is not possible)
+    private boolean anonymous; // Whether or not anonymous connection is possible
 
     public int getId() {
         return id;

@@ -1,25 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package seacon.datacollectorweb;
 
-import java.io.BufferedReader;
+import entity.ProcessOutputPrinter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Creates a new process (the desktop monitoring applications), and assigns it to a ProcessOutputWriter
  * @author Peter
  */
 public class process_output_display extends HttpServlet {
 
+    private final String DATA_COLLECTOR_PATH = "C:\\Users\\Peter\\Documents\\NetBeansProjects\\DataCollectorDesktop\\target\\DataCollector-jar-with-dependencies.jar"; // Path of the application, testing purposes only
+    
+    private ProcessOutputPrinter printer;
+    private Process p;
+        
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -46,7 +47,44 @@ public class process_output_display extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+           
+           try (PrintWriter out = response.getWriter()) {
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Process</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Process started</h1>");
+                
+                out.println("<form name=\"stop_form\" method=\"post\" action=\"process_output_display\">");
+                out.println("<input type=\"submit\" name=\"stop\" value=\"Stop\"><br> ");
+                out.println("</table>");
+           }
+        
+        try {
+            processRequest(request, response);
+            String sql = (String)request.getSession().getAttribute("sql");
+            String opc = (String)request.getSession().getAttribute("opc");
+            
+            System.out.println("SQL: " + sql);
+            System.out.println("OPC: " + opc);
+            
+            System.out.println("Process starting");
+            
+            ProcessBuilder pb = new ProcessBuilder("java", "-jar", DATA_COLLECTOR_PATH, sql, opc);
+            
+            printer = new ProcessOutputPrinter();
+
+            pb.redirectErrorStream(true);
+            p = pb.start();
+            
+            printer.setProcess(p);
+            printer.start();
+            
+        } catch (Exception ex) {
+            Logger.getLogger(process_output_display.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -60,11 +98,14 @@ public class process_output_display extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String sql = (String)request.getSession().getAttribute("sql");
-        String opc = (String)request.getSession().getAttribute("opc");
         
-        System.out.println("SQL: " + sql);
-        System.out.println("OPC: " + opc);
+        String redirect = "main_page";
+        
+        if(request.getParameter("stop") != null) {
+            System.out.println("Stopping data collector...");
+            printer.terminate();
+        }
+        response.sendRedirect(redirect);
     }
 
     /**
