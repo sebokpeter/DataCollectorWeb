@@ -36,7 +36,7 @@
                 <label for="descriptorSelect">Example multiple select</label>
                 <select class="form-control" id="descriptorSelect">
                     <%
-                        List<DescriptorConn> descriptors = (List<DescriptorConn>) request.getAttribute("descriptros");
+                        List<DescriptorConn> descriptors = (List<DescriptorConn>) request.getAttribute("descriptors");
                         Iterator descIter = descriptors.iterator();
 
                         while (descIter.hasNext()) {

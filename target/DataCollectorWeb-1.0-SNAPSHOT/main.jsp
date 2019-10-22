@@ -46,7 +46,7 @@
                 %>
             </table>
 
-            <input type="submit" value="Start">
+            <input type="submit" class="btn btn-primary" value="Start">
 
             <h2>
                 <a href="sqlconf_servlet">Add New Configuration</a>
@@ -77,7 +77,7 @@
                         out.println("<td>" + next.getPassword() + "</td>");
                         out.println("<td>" + next.isAnonymous() + "</td>");
                         out.println("<td><input type=\"radio\" name=\"opc_selection\" value=" + next.getId() + " ></td>");
-                        out.println("<td><button type=\"submit\" name=\"deleteOPCButton\" value=" + next.getId() + ">Delete</td>");
+                        out.println("<td><button type=\"submit\" class=\"btn btn-danger\" name=\"deleteOPCButton\" value=" + next.getId() + ">Delete</td>");
                         out.println("</tr>");
                     }
                 %>
