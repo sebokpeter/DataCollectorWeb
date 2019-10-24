@@ -11,30 +11,31 @@
     </head>
     <body>
         <h1>SQL server parameter configuration</h1>
+        
         <form name="sql_form" method="post" action="sqlconf_servlet">
             <div class="form-group">
                 <label for="name">Login name</label>
-                <input type="text" class="form-control" id="name" placeholder="Login name">
+                <input type="text" class="form-control" id="name" name="login" placeholder="Login name">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" name="pwd" placeholder="Password">
             </div>
             <div class="form-group">
                 <label for="db_name">Database name</label>
-                <input type="text" class="form-control" id="db_name" placeholder="Database name">
+                <input type="text" class="form-control" id="db_name" name="db_name" placeholder="Database name">
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="Address">
+                <input type="text" class="form-control" id="address" name ="address" placeholder="Address">
             </div>
             <div class="form-group">
-                <label for="address">Port</label>
-                <input type="number" class="form-control" id="port" min="1" max="65535" placeholder="Port">
+                <label for="port">Port</label>
+                <input type="number" class="form-control" id="port" name="port" min="1" max="65535" placeholder="Port">
             </div>
             <div class="form-group">
                 <label for="descriptorSelect">Example multiple select</label>
-                <select class="form-control" id="descriptorSelect">
+                <select class="form-control" id="descriptorSelect" name="conn">
                     <%
                         List<DescriptorConn> descriptors = (List<DescriptorConn>) request.getAttribute("descriptors");
                         Iterator descIter = descriptors.iterator();
@@ -46,7 +47,8 @@
                     %>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Send</button>
+                
+            <button type="submit" class="btn btn-primary">Save</button>
         </form>
         <a href="main_page">Back</a>
         <a href="descriptor_servlet">Create new descriptor</a>

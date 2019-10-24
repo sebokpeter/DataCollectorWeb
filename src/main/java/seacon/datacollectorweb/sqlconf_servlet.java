@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "sqlconf_servlet", urlPatterns = {"/sqlconf_servlet"})
 public class sqlconf_servlet extends HttpServlet {
-
     private final DataAccess dataAccess = new DataAccess();
 
     /**

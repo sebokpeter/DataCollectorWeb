@@ -16,9 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Peter
  */
 public class descriptor_save_servlet extends HttpServlet {
-    
     private final DataAccess dataAccess = new DataAccess();
-
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,8 +27,7 @@ public class descriptor_save_servlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -46,7 +43,6 @@ public class descriptor_save_servlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -56,8 +52,7 @@ public class descriptor_save_servlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -70,9 +65,7 @@ public class descriptor_save_servlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {            
             // Retrieve parameter values from request
             String name = request.getParameter("name");
@@ -115,7 +108,6 @@ public class descriptor_save_servlet extends HttpServlet {
             }
             
             response.sendRedirect("sqlconf_servlet");
-            
         } catch (Exception ex) {
             Logger.getLogger(descriptor_save_servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -129,6 +121,6 @@ public class descriptor_save_servlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

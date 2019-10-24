@@ -18,11 +18,10 @@ import seacon.datacollectorweb.process_output_display;
  * @author Peter
  */
 public class ProcessOutputPrinter implements Runnable {
-    private AtomicBoolean terminate = new AtomicBoolean(false);
+    private final AtomicBoolean terminate = new AtomicBoolean(false);
 
     private Thread t;
     private Process process; // The process whose output will be written
-    
     private File log;
     
     /**
@@ -49,9 +48,10 @@ public class ProcessOutputPrinter implements Runnable {
     public void run() {
         BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
         
-        LocalDateTime time = LocalDateTime.now();
+        String timestamp = LocalDateTime.now().toString().replace(':', '-').replace('.', '-');
         
-        log = new File("C:\\Users\\Peter\\Documents\\NetBeansProjects\\DataCollectorWeb\\process_" + time.toString() + ".log");
+        log = new File(System.getProperty("user.home") + "\\Documents\\SeaconDataCollector\\log\\process_" + timestamp + ".log");
+        log.getParentFile().mkdirs();
         
         String line;
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(log))) {

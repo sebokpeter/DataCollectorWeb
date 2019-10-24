@@ -10,21 +10,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index</title>
     </head>
-    <body>
+    <body class="px-5 pt-3">
         <h1>Seacon DataCollector</h1>
+        
+        <h3 class="pt-4 pb-2">SQL Configurations</h3>
+        
         <form name="selection_form" method="post" action="main_page">
-            <table border="1">
-                <tr>
-                    <td>ID</td>
-                    <td>NAME</td>
-                    <td>PASSWORD</td>
-                    <td>DATABASE NAME</td>
-                    <td>DATABASE ADDRESS</td>
-                    <td>DATABASE PORT</td>
-                    <td>DESCRIPTOR</td>
-                    <td>SELECTED</td>
-                    <td>DELETE</td>
-                </tr>
+            <table class="table table-bordered text-center">
+                <thead class="thead-light">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Password</th>
+                    <th>Database Name</th>
+                    <th>Database Address</th>
+                    <th>Database Port</th>
+                    <th>Descriptor</th>
+                    <th>Selected</th>
+                    <th></th>
+                </thead>
+                <tbody>
                 <%
                     List<SQLData> sql = (List<SQLData>) request.getAttribute("sqlData");
                     Iterator sqlIter = sql.iterator();
@@ -44,25 +48,27 @@
                         out.println("</tr>");
                     }
                 %>
+                <tr>
+                    <td colspan="9" class="py-2">
+                        <a href="sqlconf_servlet" class="btn btn-primary font-weight-bold pt-1" style="border-radius: 19px; width: 38px; height: 38px">+</a>
+                    </td>
+                </tr>
+                </tbody>
             </table>
 
-            <input type="submit" class="btn btn-primary" value="Start">
-
-            <h2>
-                <a href="sqlconf_servlet">Add New Configuration</a>
-            </h2>
-
-            <table border="1">
-                <tr>
-                    <td>ID</td>
-                    <td>NAME</td>
-                    <td>URL</td>
-                    <td>USERNAME</td>
-                    <td>PASSWORD</td>
-                    <td>ANONYMOUS</td>
-                    <td>SELECTED</td>
-                    <td>DELETE</td>
-                </tr>
+            <h3 class="pt-4 pb-2">OPC Configurations</h3>
+            
+            <table class="table table-bordered text-center">
+                <thead class="thead-light">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>URL</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Anonymous</th>
+                    <th>Selected</th>
+                    <th></th>
+                </thead>
                 <%
                     List<OPCConf> opc = (List<OPCConf>) request.getAttribute("opcData");
                     Iterator opcIter = opc.iterator();
@@ -81,10 +87,14 @@
                         out.println("</tr>");
                     }
                 %>
+                <tr>
+                    <td colspan="9" class="py-2">
+                        <a href="opc_conf_servlet" class="btn btn-primary font-weight-bold pt-1" style="border-radius: 19px; width: 38px; height: 38px">+</a>
+                    </td>
+                </tr>
             </table>
-            <h2>
-                <a href="opc_conf_servlet">OPC configuration</a>
-            </h2>
+
+            <input type="submit" class="btn btn-primary" value="Start">
         </form>
     </body>
 </html>

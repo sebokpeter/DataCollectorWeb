@@ -3,7 +3,7 @@ package seacon.datacollectorweb;
 import DAL.DataAccess;
 import entity.OPCConf;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,40 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "opc_conf_servlet", urlPatterns = {"/opc_conf_servlet"})
 public class opc_conf_servlet extends HttpServlet {
-    
     private final DataAccess dataAccess = new DataAccess();
-
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<title>OPC configuration</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>OPC configuration</h1>");
-            out.println("<form name=\"opc_form\" method=\"post\" action=\"opc_conf_servlet\">");
-            out.println("Name:<input type=\"text\" name=\"conf_name\">");
-            out.println("OPC URL:<input type=\"text\" name=\"url\">");
-            out.println("Anonymous access:<input type=\"checkbox\" name=\"anonymous\">");
-            out.println("Username:<input type=\"text\" name=\"name\">");
-            out.println("Password:<input type=\"password\" name=\"password\">");
-            out.println("<input type=\"submit\" value=\"Send\"/>");
-            out.println("</form>");
-            out.println("</body>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -59,9 +27,9 @@ public class opc_conf_servlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher view = request.getRequestDispatcher("opcconfig.jsp");
+        view.forward(request, response);
     }
 
     /**
@@ -69,25 +37,24 @@ public class opc_conf_servlet extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String confName = request.getParameter("conf_name");
+        String confName = request.getParameter("name");
         String url = request.getParameter("url");
         String anon = request.getParameter("anonymous");
-        String name = request.getParameter("name");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
         
         boolean allow_anonymous = anon != null;
         
-        if (!allow_anonymous && (name == null || password == null)) {
+        if (!allow_anonymous && (username == null || password == null)) {
             throw new IllegalArgumentException("Only anonymous access allowed without a name and a password!");
         }
         
         if (allow_anonymous) {
-            name = "N/A";
+            username = "N/A";
             password = "N/A";
         }
         
@@ -95,14 +62,13 @@ public class opc_conf_servlet extends HttpServlet {
         
         conf.setName(confName);
         conf.setAnonymous(allow_anonymous);
-        conf.setUserName(name);
+        conf.setUserName(username);
         conf.setPassword(password);
         conf.setUrl(url);
         
         dataAccess.saveOPCConf(conf);
         
         response.sendRedirect("main_page");
-        
     }
 
     /**
@@ -113,6 +79,6 @@ public class opc_conf_servlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

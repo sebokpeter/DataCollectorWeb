@@ -1,0 +1,455 @@
+NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+[EL Info]: 2019-10-24 12:54:03.529--ServerSession(553695088)--EclipseLink, version: Eclipse Persistence Services - 2.7.4.v20190115-ad5b7c6b2a
+[EL Info]: connection: 2019-10-24 12:54:03.706--ServerSession(553695088)--/file:/C:/Users/Developer/Documents/GitHub/DataCollectorDesktop/target/DataCollector-jar-with-dependencies.jar_DataManager login successful
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.bouncycastle.jcajce.provider.drbg.DRBG (file:/C:/Users/Developer/Documents/GitHub/DataCollectorDesktop/target/DataCollector-jar-with-dependencies.jar) to constructor sun.security.provider.Sun()
+WARNING: Please consider reporting this to the maintainers of org.bouncycastle.jcajce.provider.drbg.DRBG
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+0 [main] DEBUG io.netty.util.internal.logging.InternalLoggerFactory  - Using SLF4J as the default logging framework
+2 [main] DEBUG io.netty.channel.MultithreadEventLoopGroup  - -Dio.netty.eventLoopThreads: 12
+16 [main] DEBUG io.netty.channel.nio.NioEventLoop  - -Dio.netty.noKeySetOptimization: false
+16 [main] DEBUG io.netty.channel.nio.NioEventLoop  - -Dio.netty.selectorAutoRebuildThreshold: 512
+25 [main] DEBUG io.netty.util.internal.PlatformDependent  - Platform: Windows
+26 [main] DEBUG io.netty.util.internal.PlatformDependent0  - -Dio.netty.noUnsafe: false
+28 [main] DEBUG io.netty.util.internal.PlatformDependent0  - Java version: 12
+28 [main] DEBUG io.netty.util.internal.PlatformDependent0  - sun.misc.Unsafe.theUnsafe: available
+28 [main] DEBUG io.netty.util.internal.PlatformDependent0  - sun.misc.Unsafe.copyMemory: available
+29 [main] DEBUG io.netty.util.internal.PlatformDependent0  - java.nio.Buffer.address: available
+29 [main] DEBUG io.netty.util.internal.PlatformDependent0  - direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31)
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:310)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:213)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:81)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:269)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.<init>(SingleThreadEventExecutor.java:165)
+	at io.netty.channel.SingleThreadEventLoop.<init>(SingleThreadEventLoop.java:58)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:135)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:127)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:36)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:77)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:72)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:59)
+	at org.eclipse.milo.opcua.stack.core.Stack.sharedEventLoop(Stack.java:82)
+	at org.eclipse.milo.opcua.stack.client.UaStackClientConfigBuilder.build(UaStackClientConfigBuilder.java:125)
+	at org.eclipse.milo.opcua.stack.client.DiscoveryClient.getEndpoints(DiscoveryClient.java:212)
+	at org.eclipse.milo.opcua.stack.client.DiscoveryClient.getEndpoints(DiscoveryClient.java:195)
+	at BLL.OPC.ClientRunner.createClient(ClientRunner.java:60)
+	at BLL.OPC.ClientRunner.run(ClientRunner.java:138)
+	at BLL.SubscriptionManager.startMonitoring(SubscriptionManager.java:31)
+	at BLL.DataCollectorMain.main(DataCollectorMain.java:39)
+32 [main] DEBUG io.netty.util.internal.PlatformDependent0  - java.nio.Bits.unaligned: available, true
+34 [main] DEBUG io.netty.util.internal.PlatformDependent0  - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @536aaa8d
+	at java.base/jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:376)
+	at java.base/java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:639)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:559)
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:310)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:213)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:81)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:269)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.<init>(SingleThreadEventExecutor.java:165)
+	at io.netty.channel.SingleThreadEventLoop.<init>(SingleThreadEventLoop.java:58)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:135)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:127)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:36)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:77)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:72)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:59)
+	at org.eclipse.milo.opcua.stack.core.Stack.sharedEventLoop(Stack.java:82)
+	at org.eclipse.milo.opcua.stack.client.UaStackClientConfigBuilder.build(UaStackClientConfigBuilder.java:125)
+	at org.eclipse.milo.opcua.stack.client.DiscoveryClient.getEndpoints(DiscoveryClient.java:212)
+	at org.eclipse.milo.opcua.stack.client.DiscoveryClient.getEndpoints(DiscoveryClient.java:195)
+	at BLL.OPC.ClientRunner.createClient(ClientRunner.java:60)
+	at BLL.OPC.ClientRunner.run(ClientRunner.java:138)
+	at BLL.SubscriptionManager.startMonitoring(SubscriptionManager.java:31)
+	at BLL.DataCollectorMain.main(DataCollectorMain.java:39)
+35 [main] DEBUG io.netty.util.internal.PlatformDependent0  - java.nio.DirectByteBuffer.<init>(long, int): unavailable
+35 [main] DEBUG io.netty.util.internal.PlatformDependent  - sun.misc.Unsafe: available
+49 [main] DEBUG io.netty.util.internal.PlatformDependent  - maxDirectMemory: 2684354560 bytes (maybe)
+50 [main] DEBUG io.netty.util.internal.PlatformDependent  - -Dio.netty.tmpdir: C:\Users\DEVELO~1\AppData\Local\Temp (java.io.tmpdir)
+50 [main] DEBUG io.netty.util.internal.PlatformDependent  - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+51 [main] DEBUG io.netty.util.internal.PlatformDependent  - -Dio.netty.maxDirectMemory: -1 bytes
+51 [main] DEBUG io.netty.util.internal.PlatformDependent  - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+51 [main] DEBUG io.netty.util.internal.CleanerJava9  - java.nio.ByteBuffer.cleaner(): available
+51 [main] DEBUG io.netty.util.internal.PlatformDependent  - -Dio.netty.noPreferDirect: false
+55 [main] DEBUG io.netty.util.internal.PlatformDependent  - org.jctools-core.MpscChunkedArrayQueue: available
+139 [main] DEBUG io.netty.util.ResourceLeakDetector  - -Dio.netty.leakDetection.level: simple
+139 [main] DEBUG io.netty.util.ResourceLeakDetector  - -Dio.netty.leakDetection.targetRecords: 4
+141 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory  - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@6e18bc2f
+374 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.stack.client.ChannelFsm  - [0] S(NotConnected)          x E(Connect)               = S'(Connecting)          
+418 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.numHeapArenas: 12
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.numDirectArenas: 12
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.pageSize: 8192
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.maxOrder: 11
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.chunkSize: 16777216
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.tinyCacheSize: 512
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.smallCacheSize: 256
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.normalCacheSize: 64
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.cacheTrimInterval: 8192
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.useCacheForAllThreads: true
+419 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.PooledByteBufAllocator  - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+423 [milo-shared-thread-pool-1] DEBUG io.netty.util.internal.InternalThreadLocalMap  - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+423 [milo-shared-thread-pool-1] DEBUG io.netty.util.internal.InternalThreadLocalMap  - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+455 [milo-shared-thread-pool-1] DEBUG io.netty.channel.DefaultChannelId  - -Dio.netty.processId: 7668 (auto-detected)
+457 [milo-shared-thread-pool-1] DEBUG io.netty.util.NetUtil  - -Djava.net.preferIPv4Stack: false
+457 [milo-shared-thread-pool-1] DEBUG io.netty.util.NetUtil  - -Djava.net.preferIPv6Addresses: false
+488 [milo-shared-thread-pool-1] DEBUG io.netty.util.NetUtil  - Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+490 [milo-shared-thread-pool-1] DEBUG io.netty.util.NetUtil  - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+514 [milo-shared-thread-pool-1] DEBUG io.netty.channel.DefaultChannelId  - -Dio.netty.machineId: 00:0c:29:ff:fe:44:96:86 (auto-detected)
+537 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.ByteBufUtil  - -Dio.netty.allocator.type: pooled
+537 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.ByteBufUtil  - -Dio.netty.threadLocalDirectBufferSize: 0
+537 [milo-shared-thread-pool-1] DEBUG io.netty.buffer.ByteBufUtil  - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+574 [milo-netty-event-loop-0] DEBUG io.netty.buffer.AbstractByteBuf  - -Dio.netty.buffer.checkAccessible: true
+574 [milo-netty-event-loop-0] DEBUG io.netty.buffer.AbstractByteBuf  - -Dio.netty.buffer.checkBounds: true
+574 [milo-netty-event-loop-0] DEBUG io.netty.util.ResourceLeakDetectorFactory  - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@267e23f5
+579 [milo-netty-event-loop-0] DEBUG io.netty.util.Recycler  - -Dio.netty.recycler.maxCapacityPerThread: 4096
+579 [milo-netty-event-loop-0] DEBUG io.netty.util.Recycler  - -Dio.netty.recycler.maxSharedCapacityFactor: 2
+579 [milo-netty-event-loop-0] DEBUG io.netty.util.Recycler  - -Dio.netty.recycler.linkCapacity: 16
+579 [milo-netty-event-loop-0] DEBUG io.netty.util.Recycler  - -Dio.netty.recycler.ratio: 8
+604 [milo-netty-event-loop-0] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientAcknowledgeHandler  - Sent Hello message on channel=[id: 0x4df30ddc, L:/192.168.12.128:50705 - R:DESKTOP-EMT3DE3/192.168.12.128:48010].
+608 [milo-netty-event-loop-0] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientAcknowledgeHandler  - Received Acknowledge message on channel=[id: 0x4df30ddc, L:/192.168.12.128:50705 - R:DESKTOP-EMT3DE3/192.168.12.128:48010].
+620 [milo-netty-event-loop-0] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - OpenSecureChannel timeout scheduled for +60000ms
+639 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - Sent OpenSecureChannelRequest (Issue, id=0, currentToken=-1, previousToken=-1).
+643 [milo-netty-event-loop-0] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - OpenSecureChannel timeout canceled
+647 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - Received OpenSecureChannelResponse.
+660 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - SecureChannel id=472544226, currentTokenId=1, previousTokenId=-1, lifetime=3600000ms, createdAt=DateTime{utcTime=132163880447207729, javaDate=Thu Oct 24 12:54:04 CEST 2019}
+662 [milo-netty-event-loop-0] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - 0 message(s) queued before handshake completed; sending now.
+662 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.stack.client.ChannelFsm  - [0] S(Connecting)            x E(ConnectSuccess)        = S'(Connected)           
+688 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.stack.client.ChannelFsm  - [0] S(Connected)             x E(Disconnect)            = S'(Disconnecting)       
+692 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.stack.client.ChannelFsm  - [0] Sending CloseSecureChannelRequest...
+692 [main] INFO BLL.OPC.ClientRunner  - Using endpoint: opc.tcp://DESKTOP-EMT3DE3:48010 [http://opcfoundation.org/UA/SecurityPolicy#None, None]
+697 [main] INFO org.eclipse.milo.opcua.sdk.client.OpcUaClient  - Eclipse Milo OPC UA Stack version: dev
+699 [main] INFO org.eclipse.milo.opcua.sdk.client.OpcUaClient  - Eclipse Milo OPC UA Client SDK version: dev
+706 [milo-netty-event-loop-0] DEBUG org.eclipse.milo.opcua.stack.client.ChannelFsm  - [0] channelInactive() disconnect complete
+707 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.stack.client.ChannelFsm  - [0] S(Disconnecting)         x E(DisconnectSuccess)     = S'(NotConnected)        
+707 [milo-netty-event-loop-0] DEBUG org.eclipse.milo.opcua.stack.client.ChannelFsm  - [0] channelInactive() local=/192.168.12.128:50705, remote=DESKTOP-EMT3DE3/192.168.12.128:48010
+729 [main] DEBUG org.eclipse.milo.opcua.sdk.client.OpcUaClient  - Added ServiceFaultListener: org.eclipse.milo.opcua.sdk.client.session.SessionFsmFactory$SessionFaultListener@2fa81b23
+739 [main] DEBUG org.eclipse.milo.opcua.sdk.client.OpcUaClient  - Added SessionActivityListener: org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager$1@26753687
+[EL Info]: 2019-10-24 12:54:04.939--ServerSession(1150811353)--EclipseLink, version: Eclipse Persistence Services - 2.7.4.v20190115-ad5b7c6b2a
+[EL Info]: connection: 2019-10-24 12:54:05.3--ServerSession(1150811353)--/file:/C:/Users/Developer/Documents/GitHub/DataCollectorDesktop/target/DataCollector-jar-with-dependencies.jar_MSSQLManager_transactionType=RESOURCE_LOCAL_url=jdbc:sqlserver://localhost:1433;databaseName=TEST_user=Peter login successful
+1220 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.stack.client.ChannelFsm  - [1] S(NotConnected)          x E(Connect)               = S'(Connecting)          
+1232 [milo-netty-event-loop-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientAcknowledgeHandler  - Sent Hello message on channel=[id: 0x189c09d3, L:/192.168.12.128:50708 - R:DESKTOP-EMT3DE3/192.168.12.128:48010].
+1234 [milo-netty-event-loop-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientAcknowledgeHandler  - Received Acknowledge message on channel=[id: 0x189c09d3, L:/192.168.12.128:50708 - R:DESKTOP-EMT3DE3/192.168.12.128:48010].
+1234 [milo-netty-event-loop-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - OpenSecureChannel timeout scheduled for +5000ms
+1235 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - Sent OpenSecureChannelRequest (Issue, id=0, currentToken=-1, previousToken=-1).
+1236 [milo-netty-event-loop-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - OpenSecureChannel timeout canceled
+1236 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - Received OpenSecureChannelResponse.
+1236 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - SecureChannel id=472544227, currentTokenId=1, previousTokenId=-1, lifetime=3600000ms, createdAt=DateTime{utcTime=132163880453166649, javaDate=Thu Oct 24 12:54:05 CEST 2019}
+1236 [milo-netty-event-loop-1] DEBUG org.eclipse.milo.opcua.stack.client.transport.uasc.UascClientMessageHandler  - 0 message(s) queued before handshake completed; sending now.
+1237 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.stack.client.ChannelFsm  - [1] S(Connecting)            x E(ConnectSuccess)        = S'(Connected)           
+1237 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] S(Inactive)              x E(OpenSession)           = S'(Creating)            
+1241 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] Sending CreateSessionRequest...
+1242 [NonceUtilSecureRandom] INFO org.eclipse.milo.opcua.stack.core.util.NonceUtil  - SecureRandom seeded in 1ms.
+1256 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] CreateSession succeeded: NodeId{ns=1, id=a01d1f45-9980-4d72-83ce-d9eed3cc7565}
+1256 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] S(Creating)              x E(CreateSessionSuccess)  = S'(Activating)          
+1258 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] Sending ActivateSessionRequest...
+1262 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] Session activated: OpcUaSession{sessionId=NodeId{ns=1, id=a01d1f45-9980-4d72-83ce-d9eed3cc7565}, sessionName=UaSession:Seacon Test Client:1571914445342}
+1262 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] S(Activating)            x E(ActivateSessionSuccess) = S'(Transferring)        
+1266 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] TransferSubscriptions succeeded
+1266 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] S(Transferring)          x E(TransferSubscriptionsSuccess) = S'(Initializing)        
+1268 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.OpcUaClient  - SessionInitializer: DataTypeDictionary
+1274 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 3 references
+1274 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.OpcUaClient  - SessionInitializer: NamespaceTable
+1276 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Reading DataTypeDictionary nodeId=NodeId{ns=2, id=6181}
+1316 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Reading DataTypeDictionary nodeId=NodeId{ns=2, id=Demo2}
+1316 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Reading DataTypeDictionary nodeId=NodeId{ns=3, id=BA}
+1340 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Dictionary XML: <opc:TypeDictionary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://www.unifiedautomation.com/DemoServer/" DefaultByteOrder="LittleEndian" xmlns:opc="http://opcfoundation.org/BinarySchema/" xmlns:ua="http://opcfoundation.org/UA/" TargetNamespace="http://www.unifiedautomation.com/DemoServer/">
+ <opc:Import Namespace="http://opcfoundation.org/UA/"/>
+ <opc:StructuredType BaseType="ua:ExtensionObject" Name="AccessRights">
+  <opc:Field TypeName="opc:ByteString" Name="Value"/>
+  <opc:Field TypeName="opc:ByteString" Name="ValidBits"/>
+ </opc:StructuredType>
+ <opc:StructuredType BaseType="ua:ExtensionObject" Name="StructureWithOptionalFields">
+  <opc:Field TypeName="opc:Bit" Name="OptionalInt32Specified"/>
+  <opc:Field TypeName="opc:Bit" Name="OptionalStringArraySpecified"/>
+  <opc:Field Length="30" TypeName="opc:Bit" Name="Reserved1"/>
+  <opc:Field TypeName="opc:Int32" Name="MandatoryInt32"/>
+  <opc:Field SwitchField="OptionalInt32Specified" TypeName="opc:Int32" Name="OptionalInt32"/>
+  <opc:Field TypeName="opc:Int32" Name="NoOfMandatoryStringArray"/>
+  <opc:Field LengthField="NoOfMandatoryStringArray" TypeName="opc:CharArray" Name="MandatoryStringArray"/>
+  <opc:Field SwitchField="OptionalStringArraySpecified" TypeName="opc:Int32" Name="NoOfOptionalStringArray"/>
+  <opc:Field LengthField="NoOfOptionalStringArray" SwitchField="OptionalStringArraySpecified" TypeName="opc:CharArray" Name="OptionalStringArray"/>
+ </opc:StructuredType>
+ <opc:StructuredType BaseType="ua:Union" Name="UnionTest">
+  <opc:Field TypeName="opc:UInt32" Name="SwitchField"/>
+  <opc:Field SwitchField="SwitchField" TypeName="opc:Int32" SwitchValue="1" Name="Int32"/>
+  <opc:Field SwitchField="SwitchField" TypeName="opc:CharArray" SwitchValue="2" Name="String"/>
+ </opc:StructuredType>
+ <opc:StructuredType BaseType="ua:ExtensionObject" Name="Vector">
+  <opc:Field TypeName="opc:Double" Name="X"/>
+  <opc:Field TypeName="opc:Double" Name="Y"/>
+  <opc:Field TypeName="opc:Double" Name="Z"/>
+ </opc:StructuredType>
+ <opc:StructuredType BaseType="ua:ExtensionObject" Name="WorkOrderStatusType">
+  <opc:Field TypeName="opc:CharArray" Name="Actor"/>
+  <opc:Field TypeName="opc:DateTime" Name="Timestamp"/>
+  <opc:Field TypeName="ua:LocalizedText" Name="Comment"/>
+ </opc:StructuredType>
+ <opc:StructuredType BaseType="ua:ExtensionObject" Name="WorkOrderType">
+  <opc:Field TypeName="opc:Guid" Name="ID"/>
+  <opc:Field TypeName="opc:CharArray" Name="AssetID"/>
+  <opc:Field TypeName="opc:DateTime" Name="StartTime"/>
+  <opc:Field TypeName="opc:Int32" Name="NoOfStatusComments"/>
+  <opc:Field LengthField="NoOfStatusComments" TypeName="tns:WorkOrderStatusType" Name="StatusComments"/>
+ </opc:StructuredType>
+ <opc:EnumeratedType LengthInBits="32" Name="HeaterStatus">
+  <opc:EnumeratedValue Name="Off" Value="0"/>
+  <opc:EnumeratedValue Name="Heating" Value="1"/>
+  <opc:EnumeratedValue Name="Cooling" Value="2"/>
+ </opc:EnumeratedType>
+ <opc:EnumeratedType LengthInBits="32" Name="Priority">
+  <opc:Documentation>This enumerated value defines its possible values in an EnumValues property</opc:Documentation>
+  <opc:EnumeratedValue Name="Low" Value="10"/>
+  <opc:EnumeratedValue Name="Normal" Value="40"/>
+  <opc:EnumeratedValue Name="High" Value="70"/>
+  <opc:EnumeratedValue Name="Urgent" Value="90"/>
+  <opc:EnumeratedValue Name="Immediate" Value="100"/>
+ </opc:EnumeratedType>
+</opc:TypeDictionary>
+1341 [ForkJoinPool.commonPool-worker-7] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Dictionary XML: <?xml version="1.0"?>
+<opc:TypeDictionary xmlns:opc="http://opcfoundation.org/BinarySchema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ua="http://opcfoundation.org/UA/" xmlns:tns="urn:UnifiedAutomation:CppDemoServer:BuildingAutomation" DefaultByteOrder="LittleEndian" TargetNamespace="urn:UnifiedAutomation:CppDemoServer:BuildingAutomation">
+  <opc:EnumeratedType Name="ControllerState" LengthInBits="32">
+    <opc:EnumeratedValue Name="Off" Value="0"/>
+    <opc:EnumeratedValue Name="On" Value="1"/>
+    <opc:EnumeratedValue Name="Error" Value="2"/>
+  </opc:EnumeratedType>
+  <opc:StructuredType Name="BAConfigurations" BaseType="ua:ExtensionObject">
+    <opc:Field Name="NoOfAirConditionerControllers" TypeName="opc:Int32"/>
+    <opc:Field Name="AirConditionerControllers" TypeName="tns:AirConditionerControllerConfiguration" LengthField="NoOfAirConditionerControllers"/>
+    <opc:Field Name="NoOfFurnaceControllers" TypeName="opc:Int32"/>
+    <opc:Field Name="FurnaceControllers" TypeName="tns:ControllerConfiguration" LengthField="NoOfFurnaceControllers"/>
+  </opc:StructuredType>
+  <opc:StructuredType Name="ControllerConfiguration" BaseType="ua:ExtensionObject">
+    <opc:Field Name="Name" TypeName="opc:CharArray"/>
+    <opc:Field Name="DeviceAddress" TypeName="opc:UInt32"/>
+    <opc:Field Name="TemperatureSetpoint" TypeName="opc:Double"/>
+  </opc:StructuredType>
+  <opc:StructuredType Name="AirConditionerControllerConfiguration" BaseType="tns:ControllerConfiguration">
+    <opc:Field Name="Name" TypeName="opc:CharArray" SourceType="tns:ControllerConfiguration"/>
+    <opc:Field Name="DeviceAddress" TypeName="opc:UInt32" SourceType="tns:ControllerConfiguration"/>
+    <opc:Field Name="TemperatureSetpoint" TypeName="opc:Double" SourceType="tns:ControllerConfiguration"/>
+    <opc:Field Name="HumiditySetpoint" TypeName="opc:Double"/>
+  </opc:StructuredType>
+</opc:TypeDictionary>
+1342 [ForkJoinPool.commonPool-worker-5] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Dictionary XML: <?xml version="1.0"?>
+<opc:TypeDictionary xmlns:opc="http://opcfoundation.org/BinarySchema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ua="http://opcfoundation.org/UA/" xmlns:tns="http://www.unifiedautomation.com/DemoServer/Dictionaries/Demo2" DefaultByteOrder="LittleEndian" TargetNamespace="http://www.unifiedautomation.com/DemoServer/Dictionaries/Demo2">
+  <opc:EnumeratedType Name="Gender" LengthInBits="32">
+    <opc:EnumeratedValue Name="Male" Value="0"/>
+    <opc:EnumeratedValue Name="Female" Value="1"/>
+  </opc:EnumeratedType>
+  <opc:StructuredType Name="Person" BaseType="ua:ExtensionObject">
+    <opc:Field Name="Name" TypeName="opc:CharArray"/>
+    <opc:Field Name="Height" TypeName="opc:UInt16"/>
+    <opc:Field Name="Weight" TypeName="opc:Float"/>
+    <opc:Field Name="Gender" TypeName="tns:Gender"/>
+  </opc:StructuredType>
+  <opc:StructuredType Name="CarExtras" BaseType="ua:ExtensionObject">
+    <opc:Field Name="Value" TypeName="opc:ByteString"/>
+    <opc:Field Name="ValidBits" TypeName="opc:ByteString"/>
+  </opc:StructuredType>
+  <opc:StructuredType Name="StatusSymbols" BaseType="ua:ExtensionObject">
+    <opc:Field TypeName="opc:Bit" Name="JobSpecified"/>
+    <opc:Field TypeName="opc:Bit" Name="HouseSpecified"/>
+    <opc:Field TypeName="opc:Bit" Name="CarSpecified"/>
+    <opc:Field Length="29" TypeName="opc:Bit" Name="Reserved1"/>
+    <opc:Field Name="Job" TypeName="opc:CharArray" SwitchField="JobSpecified"/>
+    <opc:Field Name="House" TypeName="opc:CharArray" SwitchField="HouseSpecified"/>
+    <opc:Field Name="Car" TypeName="opc:CharArray" SwitchField="CarSpecified"/>
+  </opc:StructuredType>
+  <opc:StructuredType Name="AnalogMeasurementValue" BaseType="ua:Union">
+    <opc:Field TypeName="opc:UInt32" Name="SwitchValue"/>
+    <opc:Field Name="Temperature" TypeName="opc:Float" SwitchField="SwitchValue" SwitchValue="1"/>
+    <opc:Field Name="Voltage" TypeName="opc:Int32" SwitchField="SwitchValue" SwitchValue="2"/>
+    <opc:Field Name="Preassure" TypeName="opc:UInt16" SwitchField="SwitchValue" SwitchValue="3"/>
+  </opc:StructuredType>
+</opc:TypeDictionary>
+1557 [ForkJoinPool.commonPool-worker-7] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - EnumeratedType: ControllerState
+1559 [ForkJoinPool.commonPool-worker-7] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: BAConfigurations
+1559 [ForkJoinPool.commonPool-worker-5] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - EnumeratedType: Gender
+1560 [ForkJoinPool.commonPool-worker-5] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: Person
+1562 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - EnumeratedType: HeaterStatus
+1562 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - EnumeratedType: Priority
+1562 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: AccessRights
+1580 [ForkJoinPool.commonPool-worker-7] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: ControllerConfiguration
+1580 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: StructureWithOptionalFields
+1580 [ForkJoinPool.commonPool-worker-5] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: CarExtras
+1580 [ForkJoinPool.commonPool-worker-7] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: AirConditionerControllerConfiguration
+1582 [ForkJoinPool.commonPool-worker-5] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: StatusSymbols
+1582 [ForkJoinPool.commonPool-worker-5] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: AnalogMeasurementValue
+1582 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: UnionTest
+1582 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: Vector
+1582 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: WorkOrderStatusType
+1582 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.binaryschema.GenericBsdParser  - StructuredType: WorkOrderType
+1582 [ForkJoinPool.commonPool-worker-7] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - enumCodecs.size()=1
+1582 [ForkJoinPool.commonPool-worker-7] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - structCodecs.size()=3
+1582 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - enumCodecs.size()=2
+1582 [ForkJoinPool.commonPool-worker-3] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - structCodecs.size()=6
+1582 [ForkJoinPool.commonPool-worker-5] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - enumCodecs.size()=1
+1582 [ForkJoinPool.commonPool-worker-5] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - structCodecs.size()=4
+1586 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 3 references
+1590 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 6 references
+1591 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 4 references
+1607 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1609 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1610 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1627 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1627 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1629 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1629 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1630 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1630 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1636 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1637 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1638 [milo-shared-thread-pool-0] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1638 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1644 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1645 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1654 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1659 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=BAConfigurations dataTypeId=NodeId{ns=3, id=8} encodingId=NodeId{ns=3, id=9}
+1659 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=ControllerConfiguration dataTypeId=NodeId{ns=3, id=2} encodingId=NodeId{ns=3, id=3}
+1659 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=AirConditionerControllerConfiguration dataTypeId=NodeId{ns=3, id=5} encodingId=NodeId{ns=3, id=6}
+1659 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1660 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1660 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1660 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1662 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1662 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1662 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=AccessRights dataTypeId=NodeId{ns=2, id=3008} encodingId=NodeId{ns=2, id=5007}
+1662 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=StructureWithOptionalFields dataTypeId=NodeId{ns=2, id=3007} encodingId=NodeId{ns=2, id=5005}
+1663 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=UnionTest dataTypeId=NodeId{ns=2, id=3006} encodingId=NodeId{ns=2, id=5003}
+1663 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=Vector dataTypeId=NodeId{ns=2, id=3002} encodingId=NodeId{ns=2, id=5054}
+1663 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=WorkOrderStatusType dataTypeId=NodeId{ns=2, id=3004} encodingId=NodeId{ns=2, id=5011}
+1663 [milo-shared-thread-pool-4] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=WorkOrderType dataTypeId=NodeId{ns=2, id=3003} encodingId=NodeId{ns=2, id=5013}
+1665 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1666 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1666 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1667 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Browse finished with 1 references
+1668 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=Person dataTypeId=NodeId{ns=2, id=543210} encodingId=NodeId{ns=2, id=543211}
+1668 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=CarExtras dataTypeId=NodeId{ns=2, id=543229} encodingId=NodeId{ns=2, id=543220}
+1668 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=StatusSymbols dataTypeId=NodeId{ns=2, id=543216} encodingId=NodeId{ns=2, id=543217}
+1668 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.DataTypeDictionaryReader  - Registered codec description=AnalogMeasurementValue dataTypeId=NodeId{ns=2, id=543213} encodingId=NodeId{ns=2, id=543214}
+1669 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] Initialization succeeded: OpcUaSession{sessionId=NodeId{ns=1, id=a01d1f45-9980-4d72-83ce-d9eed3cc7565}, sessionName=UaSession:Seacon Test Client:1571914445342}
+1670 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] S(Initializing)          x E(InitializeSuccess)     = S'(Active)              
+1685 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+1685 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=43, acknowledgements=[]
+1686 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+1686 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=44, acknowledgements=[]
+1693 [main] INFO BLL.OPC.Subscription  - item created for nodeID=NodeId{ns=3, id=AirConditioner_1.Temperature}
+1693 [main] INFO BLL.OPC.Subscription  - item created for nodeID=NodeId{ns=3, id=AirConditioner_2.Humidity}
+2681 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received PublishResponse, sequenceNumber=1
+2681 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete() response for subscriptionId=472544225
+2681 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - [id=472544225] PublishResponse sequence=1, available sequences=[id=472544225/seq=1]
+2683 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete(), subscriptionId=472544225, sequenceNumber=1, publishTime=DateTime{utcTime=132163880467609853, javaDate=Thu Oct 24 12:54:06 CEST 2019}
+2683 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received 2 MonitoredItemNotifications
+2684 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 71.420999999989
+2685 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_1.Temperature} value=71.420999999989
+2685 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 59.99651999999499
+2685 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_2.Humidity} value=59.99651999999499
+2685 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+2687 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=46, acknowledgements=[id=472544225/seq=1]
+3681 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received PublishResponse, sequenceNumber=2
+3682 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete() response for subscriptionId=472544225
+3682 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - [id=472544225] PublishResponse sequence=2, available sequences=[id=472544225/seq=2]
+3682 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete(), subscriptionId=472544225, sequenceNumber=2, publishTime=DateTime{utcTime=132163880477629155, javaDate=Thu Oct 24 12:54:07 CEST 2019}
+3682 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received 2 MonitoredItemNotifications
+3682 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 71.61399999998899
+3682 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_1.Temperature} value=71.61399999998899
+3682 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 59.997679999994986
+3683 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_2.Humidity} value=59.997679999994986
+3683 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+3683 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=47, acknowledgements=[id=472544225/seq=2]
+4683 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received PublishResponse, sequenceNumber=3
+4683 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete() response for subscriptionId=472544225
+4683 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - [id=472544225] PublishResponse sequence=3, available sequences=[id=472544225/seq=3]
+4683 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete(), subscriptionId=472544225, sequenceNumber=3, publishTime=DateTime{utcTime=132163880487641568, javaDate=Thu Oct 24 12:54:08 CEST 2019}
+4683 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received 2 MonitoredItemNotifications
+4683 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 71.80699999998899
+4683 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_1.Temperature} value=71.80699999998899
+4683 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 59.998839999994985
+4683 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_2.Humidity} value=59.998839999994985
+4685 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+4685 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=48, acknowledgements=[id=472544225/seq=3]
+5685 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received PublishResponse, sequenceNumber=4
+5685 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete() response for subscriptionId=472544225
+5685 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - [id=472544225] PublishResponse sequence=4, available sequences=[id=472544225/seq=4]
+5685 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete(), subscriptionId=472544225, sequenceNumber=4, publishTime=DateTime{utcTime=132163880497660854, javaDate=Thu Oct 24 12:54:09 CEST 2019}
+5685 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received 2 MonitoredItemNotifications
+5685 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 71.99999999998899
+5685 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_1.Temperature} value=71.99999999998899
+5685 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 59.999999999994984
+5686 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_2.Humidity} value=59.999999999994984
+5686 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+5686 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=49, acknowledgements=[id=472544225/seq=4]
+6673 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] S(Active)                x E(KeepAlive)             = S'(Active)              
+6675 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] ServerState: Running
+6687 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received PublishResponse, sequenceNumber=5
+6687 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete() response for subscriptionId=472544225
+6687 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - [id=472544225] PublishResponse sequence=5, available sequences=[id=472544225/seq=5]
+6687 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete(), subscriptionId=472544225, sequenceNumber=5, publishTime=DateTime{utcTime=132163880507679989, javaDate=Thu Oct 24 12:54:10 CEST 2019}
+6687 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received 2 MonitoredItemNotifications
+6687 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 72.19299999998898
+6687 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_1.Temperature} value=72.19299999998898
+6687 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 59.998839999994985
+6687 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_2.Humidity} value=59.998839999994985
+6687 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+6689 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=51, acknowledgements=[id=472544225/seq=5]
+7688 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received PublishResponse, sequenceNumber=6
+7688 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete() response for subscriptionId=472544225
+7688 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - [id=472544225] PublishResponse sequence=6, available sequences=[id=472544225/seq=6]
+7688 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete(), subscriptionId=472544225, sequenceNumber=6, publishTime=DateTime{utcTime=132163880517692694, javaDate=Thu Oct 24 12:54:11 CEST 2019}
+7688 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received 2 MonitoredItemNotifications
+7689 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 71.22799999998898
+7689 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_1.Temperature} value=71.22799999998898
+7689 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 59.999999999994984
+7689 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_2.Humidity} value=59.999999999994984
+7689 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+7689 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=52, acknowledgements=[id=472544225/seq=6]
+8690 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received PublishResponse, sequenceNumber=7
+8690 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete() response for subscriptionId=472544225
+8690 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - [id=472544225] PublishResponse sequence=7, available sequences=[id=472544225/seq=7]
+8690 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete(), subscriptionId=472544225, sequenceNumber=7, publishTime=DateTime{utcTime=132163880527711911, javaDate=Thu Oct 24 12:54:12 CEST 2019}
+8690 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received 2 MonitoredItemNotifications
+8690 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 71.42099999998898
+8690 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_1.Temperature} value=71.42099999998898
+8691 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 60.00115999999498
+8691 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_2.Humidity} value=60.00115999999498
+8691 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+8691 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=53, acknowledgements=[id=472544225/seq=7]
+9692 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received PublishResponse, sequenceNumber=8
+9692 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete() response for subscriptionId=472544225
+9692 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - [id=472544225] PublishResponse sequence=8, available sequences=[id=472544225/seq=8]
+9692 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete(), subscriptionId=472544225, sequenceNumber=8, publishTime=DateTime{utcTime=132163880537731084, javaDate=Thu Oct 24 12:54:13 CEST 2019}
+9692 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received 2 MonitoredItemNotifications
+9692 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 71.61399999998898
+9693 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_1.Temperature} value=71.61399999998898
+9693 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 60.00231999999498
+9693 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_2.Humidity} value=60.00231999999498
+9693 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+9693 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=54, acknowledgements=[id=472544225/seq=8]
+10694 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received PublishResponse, sequenceNumber=9
+10694 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete() response for subscriptionId=472544225
+10694 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - [id=472544225] PublishResponse sequence=9, available sequences=[id=472544225/seq=9]
+10694 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - onPublishComplete(), subscriptionId=472544225, sequenceNumber=9, publishTime=DateTime{utcTime=132163880547750365, javaDate=Thu Oct 24 12:54:14 CEST 2019}
+10694 [milo-shared-thread-pool-2] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Received 2 MonitoredItemNotifications
+10694 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 71.80699999998897
+10694 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_1.Temperature} value=71.80699999998897
+10695 [milo-shared-thread-pool-2] INFO DAL.DatabaseWriter  - Value added: 60.00347999999498
+10695 [milo-shared-thread-pool-2] INFO BLL.OPC.Subscription  - subscription value recieved: item=NodeId{ns=3, id=AirConditioner_2.Humidity} value=60.00347999999498
+10695 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - getTimeoutHint() maxKeepAlive=10000.0 maxPendingPublishes=2 timeoutHint=30000.0
+10695 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.subscriptions.OpcUaSubscriptionManager  - Sending PublishRequest, requestHandle=55, acknowledgements=[id=472544225/seq=9]
+11674 [milo-shared-thread-pool-1] DEBUG org.eclipse.milo.opcua.sdk.client.SessionFsm  - [2] S(Active)                x E(KeepAlive)             = S'(Active)              

@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * This servlet is responsible for creating the main page of the application.
+ *
  * @author Peter
  */
 public class main_page extends HttpServlet {
-
     private final DataAccess dataAccess = new DataAccess();
-    
-   /**
+
+    /**
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
@@ -37,7 +37,8 @@ public class main_page extends HttpServlet {
             Logger.getLogger(main_page.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        /**
+
+    /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
@@ -47,35 +48,33 @@ public class main_page extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-            String redirectUrl = "main_page";
-        
-            String delete = request.getParameter("deleteButton"); // Check if deletion was requested by the user
+        String redirectUrl = "main_page";
 
-            if(delete != null) {
-               int id = Integer.parseInt(delete);
-               dataAccess.deleteConfig(id);
-            }
-            
-            String deleteOPC = request.getParameter("deleteOPCButton");
-            
-            if(deleteOPC != null) {
-               int id = Integer.parseInt(deleteOPC);
-               dataAccess.deleteOpcConfig(id);
-            }
-            
-            String sqlSelection = request.getParameter("selection");
-            String opcSelection = request.getParameter("opc_selection");
-            
-            if (sqlSelection != null && opcSelection != null) {
-                // Start the data collecting application
-                request.getSession().setAttribute("sql", sqlSelection);
-                request.getSession().setAttribute("opc", opcSelection);
-                redirectUrl = "process_output_display";
-            }
-            response.sendRedirect(redirectUrl);
+        String delete = request.getParameter("deleteButton"); // Check if deletion was requested by the user
+
+        if (delete != null) {
+            int id = Integer.parseInt(delete);
+            dataAccess.deleteConfig(id);
+        }
+
+        String deleteOPC = request.getParameter("deleteOPCButton");
+
+        if (deleteOPC != null) {
+            int id = Integer.parseInt(deleteOPC);
+            dataAccess.deleteOpcConfig(id);
+        }
+
+        String sqlSelection = request.getParameter("selection");
+        String opcSelection = request.getParameter("opc_selection");
+
+        if (sqlSelection != null && opcSelection != null) {
+            // Start the data collecting application
+            request.getSession().setAttribute("sql", sqlSelection);
+            request.getSession().setAttribute("opc", opcSelection);
+            redirectUrl = "process_output_display";
+        }
+        response.sendRedirect(redirectUrl);
     }
-    
 
     /**
      * Returns a short description of the servlet.
