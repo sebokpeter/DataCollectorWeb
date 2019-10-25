@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
  * Create a form for inputting OPC server values
  * @author Peter
  */
-@WebServlet(name = "opc_conf_servlet", urlPatterns = {"/opc_conf_servlet"})
-public class opc_conf_servlet extends HttpServlet {
+@WebServlet(name = "opcconf_servlet", urlPatterns = {"/opcconfig"})
+public class opcconf_servlet extends HttpServlet {
     private final DataAccess dataAccess = new DataAccess();
     
     /**

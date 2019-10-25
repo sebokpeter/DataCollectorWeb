@@ -1,13 +1,13 @@
-seacon\datacollectorweb\main_page.class
 DAL\DataAccess.class
 seacon\datacollectorweb\descriptor_save_servlet.class
 Utils\Utility.class
 entity\SQLData.class
 entity\Descriptor.class
+seacon\datacollectorweb\main_page_servlet.class
 seacon\datacollectorweb\sqlconf_servlet.class
 entity\DescriptorConn.class
 seacon\datacollectorweb\process_output_display.class
 entity\ProcessOutputPrinter.class
+seacon\datacollectorweb\opcconf_servlet.class
 entity\OPCConf.class
 seacon\datacollectorweb\descriptor_servlet.class
-seacon\datacollectorweb\opc_conf_servlet.class

@@ -15,7 +15,7 @@
         
         <h3 class="pt-4 pb-2">SQL Configurations</h3>
         
-        <form name="selection_form" method="post" action="main_page">
+        <form name="selection_form" method="post" action="main">
             <table class="table table-bordered text-center">
                 <thead class="thead-light">
                     <th>ID</th>
@@ -50,7 +50,7 @@
                 %>
                 <tr>
                     <td colspan="9" class="py-2">
-                        <a href="sqlconf_servlet" class="btn btn-primary font-weight-bold pt-1" style="border-radius: 19px; width: 38px; height: 38px">+</a>
+                        <a href="sqlconfig" class="btn btn-primary font-weight-bold pt-1" style="border-radius: 19px; width: 38px; height: 38px">+</a>
                     </td>
                 </tr>
                 </tbody>
@@ -89,7 +89,7 @@
                 %>
                 <tr>
                     <td colspan="9" class="py-2">
-                        <a href="opc_conf_servlet" class="btn btn-primary font-weight-bold pt-1" style="border-radius: 19px; width: 38px; height: 38px">+</a>
+                        <a href="opcconfig" class="btn btn-primary font-weight-bold pt-1" style="border-radius: 19px; width: 38px; height: 38px">+</a>
                     </td>
                 </tr>
             </table>

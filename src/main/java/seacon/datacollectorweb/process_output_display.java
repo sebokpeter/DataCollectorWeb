@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Peter
  */
+@WebServlet(name = "process_output_display", urlPatterns = {"/processdisplay"})
 public class process_output_display extends HttpServlet {
     private final String DATA_COLLECTOR_PATH = "C:\\Users\\Developer\\Documents\\GitHub\\DataCollectorDesktop\\target\\DataCollector-jar-with-dependencies.jar"; // Path of the application, testing purposes only
 
@@ -41,7 +43,7 @@ public class process_output_display extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Process started</h1>");
 
-            out.println("<form name=\"stop_form\" method=\"post\" action=\"process_output_display\">");
+            out.println("<form name=\"stop_form\" method=\"post\" action=\"processdisplay\">");
             out.println("<input type=\"submit\" name=\"stop\" value=\"Stop\"><br> ");
             out.println("</table>");
         }
@@ -78,7 +80,7 @@ public class process_output_display extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String redirect = "main_page";
+        String redirect = "main";
 
         if (request.getParameter("stop") != null) {
             System.out.println("Stopping data collector...");

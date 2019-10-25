@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Peter
  */
-@WebServlet(name = "sqlconf_servlet", urlPatterns = {"/sqlconf_servlet"})
+@WebServlet(name = "sqlconf_servlet", urlPatterns = {"/sqlconfig"})
 public class sqlconf_servlet extends HttpServlet {
     private final DataAccess dataAccess = new DataAccess();
 

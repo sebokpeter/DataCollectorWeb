@@ -17,7 +17,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import seacon.datacollectorweb.main_page;
+import seacon.datacollectorweb.main_page_servlet;
 
 /**
  * Used to access to data located in the H2 database.
@@ -70,7 +70,7 @@ public class DataAccess {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(main_page.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(main_page_servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         return data;
     }

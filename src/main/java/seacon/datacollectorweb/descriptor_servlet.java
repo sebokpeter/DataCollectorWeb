@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Peter
  */
-@WebServlet(name = "descriptor_servlet", urlPatterns = {"/descriptor_servlet"})
+@WebServlet(name = "descriptor_servlet", urlPatterns = {"/descriptor"})
 public class descriptor_servlet extends HttpServlet {
 
     /**

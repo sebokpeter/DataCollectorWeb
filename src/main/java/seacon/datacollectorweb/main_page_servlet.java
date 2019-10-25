@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Peter
  */
-public class main_page extends HttpServlet {
+public class main_page_servlet extends HttpServlet {
     private final DataAccess dataAccess = new DataAccess();
 
     /**
@@ -34,7 +35,7 @@ public class main_page extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher("main.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(main_page.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(main_page_servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -48,7 +49,7 @@ public class main_page extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String redirectUrl = "main_page";
+        String redirectUrl = "main";
 
         String delete = request.getParameter("deleteButton"); // Check if deletion was requested by the user
 
@@ -71,7 +72,7 @@ public class main_page extends HttpServlet {
             // Start the data collecting application
             request.getSession().setAttribute("sql", sqlSelection);
             request.getSession().setAttribute("opc", opcSelection);
-            redirectUrl = "process_output_display";
+            redirectUrl = "processdisplay";
         }
         response.sendRedirect(redirectUrl);
     }
