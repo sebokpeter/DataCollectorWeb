@@ -1,9 +1,9 @@
 package DAL;
 
-import entity.Descriptor;
-import entity.DescriptorConn;
-import entity.OPCConf;
-import entity.SQLData;
+import BE.Descriptor;
+import BE.DescriptorConn;
+import BE.OPCConf;
+import BE.SQLData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +17,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import seacon.datacollectorweb.main_page_servlet;
+import GUI.main_page_servlet;
 
 /**
  * Used to access to data located in the H2 database.
@@ -68,7 +68,6 @@ public class DataAccess {
                 current.setConnID(results.getInt("D_ID"));
                 data.add(current);
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(main_page_servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -122,7 +121,6 @@ public class DataAccess {
         ) {    
             stmt.setInt(1, id);
             rows = stmt.executeUpdate();
-
         } catch (SQLException ex) {
             Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }

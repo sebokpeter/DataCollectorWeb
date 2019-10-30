@@ -1,6 +1,6 @@
+<%@page import="BE.DescriptorConn"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="entity.DescriptorConn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -50,12 +50,12 @@
                                 %>
                             </select>
                         </div>
-                            
+
                         <div class="col-1 pl-0">
                             <a href="descriptor" class="btn btn-primary font-weight-bold px-0 py-0 mt-1" style="border-radius: 15px; width: 30px; height: 30px; margin-bottom: 20px">+</a>
                         </div>
                     </div>
-                            
+
                     <button type="submit" class="btn btn-primary">Save</button>
                     <a class="btn btn-secondary" href="main">Back</a>
                 </form> 
