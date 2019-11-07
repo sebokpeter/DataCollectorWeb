@@ -8,6 +8,21 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SQL configuration</title>
+        <script type="text/javascript">
+            function PickNumber() {
+                var number = prompt("Please enter the number of entries");
+                if (number != null && !isNaN(number)) {
+                    document.desc_open_form.set_number.value = number;
+                    document.desc_open_form.submit();
+                }
+                else if (number == null) {
+                    return;
+                }
+                else {
+                    PickNumber();
+                }
+            }
+        </script>
     </head>
     <body class="px-5 pt-3">
         <h1>SQL server parameter configuration</h1>
@@ -37,7 +52,7 @@
                     </div>
                     <div class="row align-items-end">
                         <div class="form-group col-11">
-                            <label for="descriptorSelect">Example multiple select</label>
+                            <label for="descriptorSelect">Descriptor</label>
                             <select class="form-control" id="descriptorSelect" name="conn">
                                 <%
                                     List<DescriptorConn> descriptors = (List<DescriptorConn>) request.getAttribute("descriptors");
@@ -52,13 +67,17 @@
                         </div>
 
                         <div class="col-1 pl-0">
-                            <a href="descriptor" class="btn btn-primary font-weight-bold px-0 py-0 mt-1" style="border-radius: 15px; width: 30px; height: 30px; margin-bottom: 20px">+</a>
+                            <a href="javascript:PickNumber();" class="btn btn-primary font-weight-bold px-0 py-0 mt-1" style="border-radius: 15px; width: 30px; height: 30px; margin-bottom: 20px">+</a>
                         </div>
-                    </div>
+                    </div>        
 
                     <button type="submit" class="btn btn-primary">Save</button>
                     <a class="btn btn-secondary" href="main">Back</a>
-                </form> 
+                </form>
+
+                <form id="desc_open_form" name="desc_open_form" method="get" action="descriptor">
+                    <input type="hidden" id="set_number" name="set_number">
+                </form>
             </div>
         </div>
     </body>

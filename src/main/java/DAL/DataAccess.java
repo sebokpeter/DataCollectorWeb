@@ -25,7 +25,7 @@ import GUI.main_page_servlet;
  * @author Peter
  */
 public class DataAccess {
-
+    
     private Context ctx = null;
     private DataSource ds = null;
 
@@ -34,10 +34,7 @@ public class DataAccess {
             Class.forName("org.h2.Driver");
             ctx = new InitialContext();
             ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/paramsDS");
-
-        } catch (NamingException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (NamingException | ClassNotFoundException ex) {
             Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -71,6 +68,7 @@ public class DataAccess {
         } catch (SQLException ex) {
             Logger.getLogger(main_page_servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return data;
     }
 
@@ -225,15 +223,13 @@ public class DataAccess {
     public boolean saveDescriptor(Descriptor d) {
         try (
             Connection conn = ds.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO DESCRIPTOR (D_ID, DB_FIELD, TYPE, NAMESPACE, NODEID, NODEID_TYPE, ITEMORDER) VALUES (?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO DESCRIPTOR (D_ID, TYPE, NAMESPACE, NODEID, NODEID_TYPE) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
         ) {
             stmt.setInt(1, d.getD_ID());
-            stmt.setString(2, d.getDb_field());
-            stmt.setString(3, d.getType());
-            stmt.setInt(4, d.getNameSpace());
-            stmt.setString(5, d.getNodeId());
-            stmt.setString(6, d.getIdType());
-            stmt.setInt(7, d.getItemOrder());
+            stmt.setString(2, d.getType());
+            stmt.setInt(3, d.getNameSpace());
+            stmt.setString(4, d.getNodeId());
+            stmt.setString(5, d.getIdType());
             int rows = stmt.executeUpdate();
 
             if (rows != 1) {
@@ -342,4 +338,5 @@ public class DataAccess {
         
         return rows == 1;
     }
+    
 }

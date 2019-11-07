@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Create a form for inputting OPC server values
+ *
  * @author Peter
  */
 @WebServlet(name = "opcconf_servlet", urlPatterns = {"/opcconfig"})
 public class opcconf_servlet extends HttpServlet {
+
     private final DataAccess dataAccess = new DataAccess();
-    
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -47,25 +49,25 @@ public class opcconf_servlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         boolean allow_anonymous = anon != null;
-        
+
         if (!allow_anonymous && (username == null || password == null)) {
             throw new IllegalArgumentException("Only anonymous access allowed without a name and a password!");
         }
-        
+
         if (allow_anonymous) {
             username = "N/A";
             password = "N/A";
         }
-        
+
         OPCConf conf = new OPCConf();
         conf.setName(confName);
         conf.setAnonymous(allow_anonymous);
         conf.setUserName(username);
         conf.setPassword(password);
         conf.setUrl(url);
-        
+
         dataAccess.saveOPCConf(conf);
-        
+
         response.sendRedirect("main");
     }
 

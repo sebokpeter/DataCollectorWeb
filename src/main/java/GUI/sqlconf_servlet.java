@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "sqlconf_servlet", urlPatterns = {"/sqlconfig"})
 public class sqlconf_servlet extends HttpServlet {
+
     private final DataAccess dataAccess = new DataAccess();
 
     /**
@@ -94,28 +95,7 @@ public class sqlconf_servlet extends HttpServlet {
         data.setConnID(connId);
 
         if (dataAccess.saveConfig(data)) {
-            // Write the success response message, in an HTML page
-            out.println("<html>");
-            out.println("<head><title>Data addedd</title></head>");
-            out.println("<body>");
-            out.println("<h1>Added SQL server connection with the following parameters:</h1>");
-            out.println("<p>Name: " + name + "</p>");
-            out.println("<p>Password: " + pwd + "</p>");
-            out.println("<p>Database name: " + dbName + "</p>");
-            out.println("<p>Database address: " + address + "</p>");
-            out.println("<p>Database port: " + port + "</p>");
-            out.println("<a href=\"main_page\">Back</a>");
-            out.println("</body></html>");
-            out.close();
-        } else {
-            // Write the faliure response message, in a HTML page
-            out.println("<html>");
-            out.println("<head><title>Data addedd</title></head>");
-            out.println("<body>");
-            out.println("<h1>Failed to add SQL server connection!</h1>");
-            out.println("<a href=\"main_page\">Back</a>");
-            out.println("</body></html>");
-            out.close();
+           response.sendRedirect("main");
         }
     }
 
@@ -127,6 +107,6 @@ public class sqlconf_servlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

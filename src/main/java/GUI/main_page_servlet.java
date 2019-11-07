@@ -84,9 +84,9 @@ public class main_page_servlet extends HttpServlet {
                 // Start the data collecting application
                 startProcess(sqlSelection, opcSelection);
             }
-            
+
             response.sendRedirect("main");
-        } catch (Exception ex) {
+        } catch (IOException | NumberFormatException ex) {
             Logger.getLogger(main_page_servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -126,8 +126,9 @@ public class main_page_servlet extends HttpServlet {
             printer.start();
 
             processList.add(printer);
-        } catch (Exception ex) {
+        } catch (IOException | IllegalAccessException ex) {
             Logger.getLogger(main_page_servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }
