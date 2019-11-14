@@ -71,6 +71,7 @@ public class ProcessOutputPrinter implements Runnable {
 
     public void terminate() {
         this.terminate.set(true);
+        this.process.destroy();
     }
 
     public String getSqlConfigId() {
