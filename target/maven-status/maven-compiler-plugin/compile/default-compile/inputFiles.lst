@@ -1,13 +1,11 @@
 C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\BE\OPCConf.java
+C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\BE\ProcessOutputPrinter.java
 C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\Utils\Utility.java
 C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\BE\SQLData.java
+C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\GUI\descriptor_servlet.java
 C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\GUI\sqlconf_servlet.java
 C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\BE\Descriptor.java
 C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\BE\DescriptorConn.java
-C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\GUI\descriptor_save_servlet.java
+C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\DAL\DataAccess.java
 C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\GUI\opcconf_servlet.java
 C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\GUI\main_page_servlet.java
-C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\BE\ProcessOutputPrinter.java
-C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\GUI\descriptor_servlet.java
-C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\DAL\DataAccess.java
-C:\Users\Developer\Documents\GitHub\DataCollectorWeb\src\main\java\GUI\process_output_display.java
