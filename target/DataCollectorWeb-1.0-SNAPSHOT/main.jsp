@@ -1,3 +1,4 @@
+<%@page import="BE.DescriptorConn"%>
 <%@page import="BE.ProcessOutputPrinter"%>
 <%@page import="BE.SQLData"%>
 <%@page import="BE.OPCConf"%>
@@ -43,7 +44,9 @@
                             out.println("<td>" + next.getDbName() + "</td>");
                             out.println("<td>" + next.getDbAddress() + "</td>");
                             out.println("<td>" + next.getDbPort() + "</td>");
-                            out.println("<td>" + request.getAttribute("descriptor") + "</td>");
+                            DescriptorConn desc = ((List<DescriptorConn>)request.getAttribute("descriptors")).stream()
+                                    .filter((x) -> x.getId() == next.getConnID()).findFirst().orElse(null);
+                            out.println("<td>" + (desc != null ? desc.getName() : "Not found") + "</td>");
                             out.println("<td><input type=\"radio\" name=\"sql_selection\" value=" + next.getId() + " ></td>");
                             out.println("<td><button type=\"submit\" class=\"btn btn-danger\" name=\"deleteButton\" value=" + next.getId() + ">Delete</button></td>");
                             out.println("</tr>");

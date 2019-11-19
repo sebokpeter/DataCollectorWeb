@@ -1,9 +1,11 @@
 package GUI;
 
 import BE.ProcessOutputPrinter;
+import BE.SQLData;
 import DAL.DataAccess;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -34,8 +36,11 @@ public class main_page_servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            request.setAttribute("sqlData", dataAccess.getSqlData());
+            List<SQLData> sqlData = dataAccess.getSqlData();
+            request.setAttribute("sqlData", sqlData);
             request.setAttribute("opcData", dataAccess.getOPCConfigurations());
+            request.setAttribute("descriptors", dataAccess.getDescriptors());
+            
             if (!processList.isEmpty()) {
                 request.setAttribute("processes", processList);
             }

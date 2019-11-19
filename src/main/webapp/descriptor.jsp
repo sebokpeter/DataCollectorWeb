@@ -13,11 +13,11 @@
                 <form name="d_form" method="post" action="descriptor">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
                     </div>
                     <div class="form-group">
                         <label for="name">Table name</label>
-                        <input type="text" class="form-control" id="table_name" name="table_name" placeholder="Table name">
+                        <input type="text" class="form-control" id="table_name" name="table_name" placeholder="Table name" required>
                     </div>
                     <%
                         int num = Integer.parseInt((String) request.getAttribute("set_number"));
@@ -29,7 +29,7 @@
                     <div class="px-3">
                         <div class="form-group">
                             <label for="name">Data Type</label>
-                            <select class="form-control" id="type" name="type">
+                            <select class="form-control" id="type" name="type" required>
                                 <option value="STRING">String</option>
                                 <option value="INTEGER">Integer</option>
                                 <option value="REAL">Real</option>
@@ -38,15 +38,15 @@
                         </div>
                         <div class="form-group">
                             <label for="name">OPC Node Namespace</label>
-                            <input type="number" min="0" class="form-control" id="ns" name="ns" placeholder="OPC Node Namespace">
+                            <input type="number" min="0" class="form-control" id="ns" name="ns" placeholder="OPC Node Namespace" required>
                         </div>
                         <div class="form-group">
                             <label for="name">OPC Node ID</label>
-                            <input type="text" class="form-control" id="nid" name="nid" placeholder="OPC Node ID">
+                            <input type="text" class="form-control" id="nid" name="nid" placeholder="OPC Node ID" required>
                         </div>
                         <div class="form-group">
                             <label for="name">OPC Node ID Type</label>
-                            <select class="form-control" id="id_type" name="id_type">
+                            <select class="form-control" id="id_type" name="id_type" required>
                                 <option value="string">String</option>
                                 <option value="int">Integer</option>
                             </select>

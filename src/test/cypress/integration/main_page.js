@@ -1,7 +1,7 @@
 /* global cy, expect */
 
 describe('DataCollectorWeb - Main page', () => {
-    it('Navigate to the main page', () => {
+    it('Navigate to the page', () => {
         cy.visit('http://localhost:8080/DataCollectorWeb/');
     });
     
@@ -27,7 +27,7 @@ describe('DataCollectorWeb - Main page', () => {
         });
     });
     
-    it('Has start button', () => {
+    it('Has Start button', () => {
         expect(cy.get('[name="startButton"]')).to.exist;
     });
     

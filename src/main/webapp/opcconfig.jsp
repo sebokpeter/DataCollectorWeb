@@ -14,11 +14,11 @@
                 <form name="opc_form" method="post" action="opcconfig">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
                     </div>
                     <div class="form-group">
                         <label for="url">OPC URL</label>
-                        <input type="text" class="form-control" id="url" name="url" placeholder="OPC URL">
+                        <input type="text" class="form-control" id="url" name="url" placeholder="OPC URL" required0>
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="anonymous" name="anonymous">

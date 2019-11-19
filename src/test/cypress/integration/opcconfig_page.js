@@ -1,13 +1,13 @@
 /* global cy */
 
-describe('DataCollectorWeb - SQL config page ', () => {
+describe('DataCollectorWeb - OPC config page ', () => {
     it('Navigate to the page', () => {
-        cy.visit('http://localhost:8080/DataCollectorWeb/sqlconfig');
+        cy.visit('http://localhost:8080/DataCollectorWeb/opcconfig');
     });
     
-    it('Title is "SQL configuration" on page', () => {
-        cy.get('title').contains('SQL configuration');
-        cy.get('h1').first().contains('SQL server parameter configuration');
+    it('Title is "OPC configuration" on page', () => {
+        cy.get('title').contains('OPC configuration');
+        cy.get('h1').first().contains('OPC configuration');
     });
     
     it('Has Save buttons', () => {
@@ -20,7 +20,7 @@ describe('DataCollectorWeb - SQL config page ', () => {
     
     it('Should not submit if data is missing', () => {
         cy.get('[type="submit"]').click().then(() => {
-            cy.location('pathname').should('eq', '/DataCollectorWeb/sqlconfig');
+            cy.location('pathname').should('eq', '/DataCollectorWeb/opcconfig');
         });
     });
     

@@ -11,11 +11,11 @@
         <script type="text/javascript">
             function PickNumber() {
                 var number = prompt("Please enter the number of entries");
-                if (number != null && !isNaN(number)) {
+                if (number !== null && !isNaN(number)) {
                     document.desc_open_form.set_number.value = number;
                     document.desc_open_form.submit();
                 }
-                else if (number == null) {
+                else if (number === null) {
                     return;
                 }
                 else {
@@ -32,28 +32,28 @@
                 <form name="sql_form" method="post" action="sqlconfig">
                     <div class="form-group">
                         <label for="name">Login name</label>
-                        <input type="text" class="form-control" id="name" name="login" placeholder="Login name">
+                        <input type="text" class="form-control" id="name" name="login" placeholder="Login name" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="pwd" placeholder="Password">
+                        <input type="password" class="form-control" id="password" name="pwd" placeholder="Password" required>
                     </div>
                     <div class="form-group">
                         <label for="db_name">Database name</label>
-                        <input type="text" class="form-control" id="db_name" name="db_name" placeholder="Database name">
+                        <input type="text" class="form-control" id="db_name" name="db_name" placeholder="Database name" required>
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" name ="address" placeholder="Address">
+                        <input type="text" class="form-control" id="address" name ="address" placeholder="Address" required>
                     </div>
                     <div class="form-group">
                         <label for="port">Port</label>
-                        <input type="number" class="form-control" id="port" name="port" min="1" max="65535" placeholder="Port">
+                        <input type="number" class="form-control" id="port" name="port" min="1" max="65535" placeholder="Port" required>
                     </div>
                     <div class="row align-items-end">
                         <div class="form-group col-11">
                             <label for="descriptorSelect">Descriptor</label>
-                            <select class="form-control" id="descriptorSelect" name="conn">
+                            <select class="form-control" id="descriptorSelect" name="conn" required>
                                 <%
                                     List<DescriptorConn> descriptors = (List<DescriptorConn>) request.getAttribute("descriptors");
                                     Iterator descIter = descriptors.iterator();
