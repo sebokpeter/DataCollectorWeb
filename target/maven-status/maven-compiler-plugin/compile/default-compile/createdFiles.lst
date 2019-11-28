@@ -1,11 +1,9 @@
+BE\ProcessOutputPrinter.class
+Utils\Utility.class
+GUI\sqlconf_servlet.class
 BE\Descriptor.class
 GUI\main_page_servlet.class
 BE\OPCConf.class
 GUI\descriptor_servlet.class
 BE\DescriptorConn.class
-BE\ProcessOutputPrinter.class
-DAL\DataAccess.class
-Utils\Utility.class
-BE\SQLData.class
 GUI\opcconf_servlet.class
-GUI\sqlconf_servlet.class

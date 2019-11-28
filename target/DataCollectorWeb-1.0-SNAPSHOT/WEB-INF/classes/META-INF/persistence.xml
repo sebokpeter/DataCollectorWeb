@@ -8,7 +8,7 @@
       <property name="javax.persistence.jdbc.user" value="sa"/>
       <property name="javax.persistence.jdbc.password" value=""/>
     </properties>
-    <class>BE.SQLData</class>
+    <class>BE.SQLConf</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
   </persistence-unit>
 </persistence>

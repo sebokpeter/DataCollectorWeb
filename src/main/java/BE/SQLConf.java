@@ -13,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "SQLDATA")
-public class SQLData implements Serializable {
+public class SQLConf implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -92,10 +92,10 @@ public class SQLData implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SQLData)) {
+        if (!(object instanceof SQLConf)) {
             return false;
         }
-        SQLData other = (SQLData) object;
+        SQLConf other = (SQLConf) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

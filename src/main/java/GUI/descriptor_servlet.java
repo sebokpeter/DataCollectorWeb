@@ -1,7 +1,8 @@
 package GUI;
 
 import BE.Descriptor;
-import DAL.DataAccess;
+import DAL.DataAccessInterface;
+import DAL.DataAccessManager;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "descriptor_servlet", urlPatterns = {"/descriptor"})
 public class descriptor_servlet extends HttpServlet {
 
-    private final DataAccess dataAccess = new DataAccess();
+    private final DataAccessInterface dataAccess = new DataAccessManager();
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -64,7 +65,7 @@ public class descriptor_servlet extends HttpServlet {
             }
 
             // Create a DESCRIPTOR_CONN
-            int id = dataAccess.saveDescriptorConnection(name, tableName);
+            int id = dataAccess.saveDescriptorConn(name, tableName);
             boolean success = true;
 
             for (int i = 0; i < types.length; i++) {

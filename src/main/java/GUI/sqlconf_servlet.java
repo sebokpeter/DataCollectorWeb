@@ -1,10 +1,8 @@
 package GUI;
 
-import DAL.DataAccess;
 import Utils.Utility;
-import BE.SQLData;
+import BE.SQLConf;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -22,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "sqlconf_servlet", urlPatterns = {"/sqlconfig"})
 public class sqlconf_servlet extends HttpServlet {
 
-    private final DataAccess dataAccess = new DataAccess();
+    private final Model model = Model.getInstance();
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -34,7 +32,7 @@ public class sqlconf_servlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("descriptors", dataAccess.getDescriptors());
+        request.setAttribute("descriptors", model.getDescriptorConns());
         RequestDispatcher view = request.getRequestDispatcher("sqlconfig.jsp");
         view.forward(request, response);
     }
@@ -54,8 +52,6 @@ public class sqlconf_servlet extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(sqlconf_servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        PrintWriter out = response.getWriter();
 
         // Parameters used to connect to the SQL database
         String name = request.getParameter("login"); // Name used to connect to the SQL server
@@ -85,7 +81,7 @@ public class sqlconf_servlet extends HttpServlet {
             throw new IllegalArgumentException("Connection ID required!"); // TODO: better name...
         }
 
-        SQLData data = new SQLData();
+        SQLConf data = new SQLConf();
 
         data.setName(name);
         data.setPassword(pwd);
@@ -94,7 +90,7 @@ public class sqlconf_servlet extends HttpServlet {
         data.setDbPort(port);
         data.setConnID(connId);
 
-        if (dataAccess.saveConfig(data)) {
+        if (model.saveSqlConfig(data)) {
            response.sendRedirect("main");
         }
     }

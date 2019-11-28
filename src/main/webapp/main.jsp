@@ -1,6 +1,6 @@
 <%@page import="BE.DescriptorConn"%>
 <%@page import="BE.ProcessOutputPrinter"%>
-<%@page import="BE.SQLData"%>
+<%@page import="BE.SQLConf"%>
 <%@page import="BE.OPCConf"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
@@ -32,11 +32,11 @@
                 </thead>
                 <tbody>
                     <%
-                        List<SQLData> sql = (List<SQLData>) request.getAttribute("sqlData");
+                        List<SQLConf> sql = (List<SQLConf>) request.getAttribute("sqlData");
                         Iterator sqlIter = sql.iterator();
 
                         while (sqlIter.hasNext()) {
-                            SQLData next = (SQLData) sqlIter.next();
+                            SQLConf next = (SQLConf) sqlIter.next();
                             out.println("<tr>");
                             out.println("<td>" + next.getId() + "</td>");
                             out.println("<td>" + next.getName() + "</td>");
@@ -44,7 +44,7 @@
                             out.println("<td>" + next.getDbName() + "</td>");
                             out.println("<td>" + next.getDbAddress() + "</td>");
                             out.println("<td>" + next.getDbPort() + "</td>");
-                            DescriptorConn desc = ((List<DescriptorConn>)request.getAttribute("descriptors")).stream()
+                            DescriptorConn desc = ((List<DescriptorConn>)request.getAttribute("descriptorconns")).stream()
                                     .filter((x) -> x.getId() == next.getConnID()).findFirst().orElse(null);
                             out.println("<td>" + (desc != null ? desc.getName() : "Not found") + "</td>");
                             out.println("<td><input type=\"radio\" name=\"sql_selection\" value=" + next.getId() + " ></td>");

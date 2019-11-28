@@ -1,6 +1,5 @@
 package GUI;
 
-import DAL.DataAccess;
 import BE.OPCConf;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -18,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "opcconf_servlet", urlPatterns = {"/opcconfig"})
 public class opcconf_servlet extends HttpServlet {
 
-    private final DataAccess dataAccess = new DataAccess();
+    private final Model model = Model.getInstance();
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -66,7 +65,7 @@ public class opcconf_servlet extends HttpServlet {
         conf.setPassword(password);
         conf.setUrl(url);
 
-        dataAccess.saveOPCConf(conf);
+        model.saveOpcConfig(conf);
 
         response.sendRedirect("main");
     }

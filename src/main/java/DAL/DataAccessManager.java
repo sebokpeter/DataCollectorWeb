@@ -3,7 +3,7 @@ package DAL;
 import BE.Descriptor;
 import BE.DescriptorConn;
 import BE.OPCConf;
-import BE.SQLData;
+import BE.SQLConf;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,36 +17,32 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import GUI.main_page_servlet;
 
 /**
  * Used to access to data located in the H2 database.
  *
  * @author Peter
  */
-public class DataAccess {
+public class DataAccessManager implements DataAccessInterface {
     
     private Context ctx = null;
     private DataSource ds = null;
 
-    public DataAccess() {
+    public DataAccessManager() {
         try {
             Class.forName("org.h2.Driver");
             ctx = new InitialContext();
             ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/paramsDS");
         } catch (NamingException | ClassNotFoundException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    /**
-     * Retrieve a list of stored configurations
-     *
-     * @return
-     * @throws java.lang.ClassNotFoundException
-     */
-    public List<SQLData> getSqlData() throws ClassNotFoundException {
-        List<SQLData> data = new ArrayList<>();
+    //SQL Functions ------------------------------------------------------------
+    
+    @Override
+    public List<SQLConf> getSqlConfigs() {
+        List<SQLConf> data = new ArrayList<>();
 
         try (
             Connection conn = ds.getConnection();
@@ -55,7 +51,7 @@ public class DataAccess {
             ResultSet results = stmt.executeQuery();
 
             while (results.next()) {
-                SQLData current = new SQLData();
+                SQLConf current = new SQLConf();
                 current.setId(results.getLong("ID"));
                 current.setName(results.getString("NAME"));
                 current.setPassword(results.getString("PASSWORD"));
@@ -66,20 +62,14 @@ public class DataAccess {
                 data.add(current);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(main_page_servlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return data;
     }
 
-    /**
-     * Save a configuration into the H2 database.
-     *
-     * @param data The configuration that will be saved.
-     * @return True if successful (the number of affected rows is 1), false
-     * otherwise
-     */
-    public boolean saveConfig(SQLData data) {
+    @Override
+    public boolean saveSqlConfig(SQLConf data) {
         try (
             Connection conn = ds.getConnection();
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO SQLDATA (NAME, PASSWORD, DB_NAME, DB_ADDRESS, DB_PORT, D_ID) VALUES (?, ?, ?, ?, ?, ?)");
@@ -97,20 +87,15 @@ public class DataAccess {
                 return false;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
 
         return true;
     }
 
-    /**
-     * Deletes a configuration with the specified ID
-     *
-     * @param id The id of the configuration that will be deleted
-     * @return True if successful, false otherwise.
-     */
-    public boolean deleteConfig(int id) {
+    @Override
+    public boolean deleteSqlConfig(int id) {
         int rows = Integer.MIN_VALUE;
 
         try (
@@ -120,106 +105,14 @@ public class DataAccess {
             stmt.setInt(1, id);
             rows = stmt.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rows == 1;
     }
 
-    /**
-     * Save a descriptor connection to the database.
-     *
-     * @param name The name of the connection.
-     * @param tableName Table name in the SQL database.
-     * @return The ID of the connection, or -1 if no key was returned by the
-     * database.
-     */
-    public int saveDescriptorConnection(String name, String tableName) {
-        int key = -1;
+    //Descriptor Functions -----------------------------------------------------
 
-        try (
-            Connection conn = ds.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO DESCRIPTOR_CONN (NAME, TABLE_NAME) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
-        ) {
-            stmt.setString(1, name);
-            stmt.setString(2, tableName);
-
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-
-            if (rs.next()) {
-                key = rs.getInt(1);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return key;
-    }
-
-    /**
-     * Retrieve all descriptors
-     *
-     * @return A list of descriptors
-     */
-    public List<DescriptorConn> getDescriptors() {
-        List<DescriptorConn> descriptors = new ArrayList<>();
-
-        try (
-            Connection conn = ds.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM DESCRIPTOR_CONN");
-        ) {
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                DescriptorConn c = new DescriptorConn();
-                c.setId(rs.getInt(1));
-                c.setName(rs.getString(2));
-                c.setTableName(rs.getString(3));
-                descriptors.add(c);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return descriptors;
-    }
-
-    /**
-     * Return a specific object by ID.
-     *
-     * @param id ID of the connection.
-     * @return The connection with the specific ID if exists, null otherwise.
-     */
-    public DescriptorConn getDescriptorConnByID(int id) {
-        try (
-            Connection conn = ds.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM DESCRIPTOR_CONN WHERE D_ID = ?");
-        ) {
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-
-            DescriptorConn d = new DescriptorConn();
-
-            while (rs.next()) {
-                d.setId(rs.getInt(1));
-                d.setName(rs.getString(2));
-                d.setTableName(rs.getString(3));
-            }
-
-            return d;
-        } catch (SQLException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
-    /**
-     * Save a given descriptor to the H2 database
-     *
-     * @param d The descriptor that will be saved
-     * @return True if the descriptor was saved (the number of modified rows is
-     * 1), false otherwise.
-     */
+    @Override
     public boolean saveDescriptor(Descriptor d) {
         try (
             Connection conn = ds.getConnection();
@@ -242,54 +135,90 @@ public class DataAccess {
                 d.setId(generatedID.getInt(1));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return true;
     }
+    
+    //DescriptorConn Functions -------------------------------------------------
+    
+    @Override
+    public List<DescriptorConn> getDescriptorConns() {
+        List<DescriptorConn> descriptorconns = new ArrayList<>();
 
-    /**
-     * Saves an OPC connection configuration to the database.
-     *
-     * @param conf The configuration that will be saved.
-     * @return True if successful (the number of updated rows equals 1), false
-     * otherwise.
-     */
-    public boolean saveOPCConf(OPCConf conf) {
         try (
             Connection conn = ds.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO OPCDATA (NAME, URL, ANON, USERNAME, PASSWORD) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM DESCRIPTOR_CONN");
         ) {
-            stmt.setString(1, conf.getName());
-            stmt.setString(2, conf.getUrl());
-            stmt.setBoolean(3, conf.isAnonymous());
-            stmt.setString(4, conf.getUserName());
-            stmt.setString(5, conf.getPassword());
+            ResultSet rs = stmt.executeQuery();
 
-            int rows = stmt.executeUpdate();
-
-            if (rows != 1) {
-                return false;
-            }
-
-            ResultSet generatedId = stmt.getGeneratedKeys();
-
-            if (generatedId.next()) {
-                conf.setId(generatedId.getInt(1));
+            while (rs.next()) {
+                DescriptorConn c = new DescriptorConn();
+                c.setId(rs.getInt(1));
+                c.setName(rs.getString(2));
+                c.setTableName(rs.getString(3));
+                descriptorconns.add(c);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return true;
+        return descriptorconns;
+    }
+    
+    @Override
+    public DescriptorConn getDescriptorConnByID(int id) {
+        try (
+            Connection conn = ds.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM DESCRIPTOR_CONN WHERE D_ID = ?");
+        ) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            DescriptorConn d = new DescriptorConn();
+
+            while (rs.next()) {
+                d.setId(rs.getInt(1));
+                d.setName(rs.getString(2));
+                d.setTableName(rs.getString(3));
+            }
+
+            return d;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    @Override
+    public int saveDescriptorConn(String name, String tableName) {
+        int key = -1;
+
+        try (
+            Connection conn = ds.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO DESCRIPTOR_CONN (NAME, TABLE_NAME) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setString(1, name);
+            stmt.setString(2, tableName);
+
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+
+            if (rs.next()) {
+                key = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return key;
     }
 
-    /**
-     * Retrieve a list of OPC configurations
-     *
-     * @return THe OPC configurations saved in the database.
-     */
-    public List<OPCConf> getOPCConfigurations() {
+    //OPC Functions ------------------------------------------------------------
+    
+    @Override
+    public List<OPCConf> getOpcConfigs() {
         List<OPCConf> configs = new ArrayList<>();
 
         try (
@@ -317,12 +246,43 @@ public class DataAccess {
                 configs.add(con);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return configs;
     }
+    
+    @Override
+    public boolean saveOpcConfig(OPCConf conf) {
+        try (
+            Connection conn = ds.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO OPCDATA (NAME, URL, ANON, USERNAME, PASSWORD) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setString(1, conf.getName());
+            stmt.setString(2, conf.getUrl());
+            stmt.setBoolean(3, conf.isAnonymous());
+            stmt.setString(4, conf.getUserName());
+            stmt.setString(5, conf.getPassword());
 
+            int rows = stmt.executeUpdate();
+
+            if (rows != 1) {
+                return false;
+            }
+
+            ResultSet generatedId = stmt.getGeneratedKeys();
+
+            if (generatedId.next()) {
+                conf.setId(generatedId.getInt(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return true;
+    }
+
+    @Override
     public boolean deleteOpcConfig(int id) {
         int rows = Integer.MIN_VALUE;
 
@@ -333,10 +293,12 @@ public class DataAccess {
             stmt.setInt(1, id);
             rows = stmt.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataAccessManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return rows == 1;
     }
+    
+    
     
 }
