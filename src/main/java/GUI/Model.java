@@ -10,13 +10,13 @@ import BE.DescriptorConn;
 import BE.OPCConf;
 import BE.ProcessOutputPrinter;
 import BE.SQLConf;
-import DAL.DataAccessInterface;
-import DAL.DataAccessManager;
+import DAL.DALManager;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import DAL.DALManagerInterface;
 
 /**
  *
@@ -24,13 +24,13 @@ import java.util.logging.Logger;
  */
 public class Model {
 
-    private static DataAccessInterface dalManager;
+    private static DALManagerInterface dalManager;
     private static Model instance;
     private final String DATA_COLLECTOR_PATH = "C:\\Users\\Developer\\Documents\\GitHub\\DataCollectorDesktop\\target\\DataCollector-jar-with-dependencies.jar"; // Path of the application, testing purposes only
     private final ArrayList<ProcessOutputPrinter> processList = new ArrayList<>();
 
     private Model() {
-        dalManager = new DataAccessManager();
+        dalManager = new DALManager();
     }
 
     public static Model getInstance() {
@@ -107,11 +107,22 @@ public class Model {
     }
 
     public boolean saveOpcConfig(OPCConf conf) {
-        return dalManager.saveOpcConfig(conf);
+        return dalManager.saveOpcConfig(conf) > 0;
     }
 
     public boolean saveSqlConfig(SQLConf data) {
-        return dalManager.saveSqlConfig(data);
+        return dalManager.saveSqlConfig(data) > 0;
+    }
+
+    public int saveDescriptorConn(String name, String tableName) {
+        DescriptorConn temp = new DescriptorConn();
+        temp.setName(name);
+        temp.setTableName(tableName);
+        return dalManager.saveDescriptorConn(temp);
+    }
+
+    public boolean saveDescriptor(Descriptor d) {
+        return dalManager.saveDescriptor(d) > 0;
     }
 
 }

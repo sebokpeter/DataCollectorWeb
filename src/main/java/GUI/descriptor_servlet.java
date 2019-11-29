@@ -1,8 +1,6 @@
 package GUI;
 
 import BE.Descriptor;
-import DAL.DataAccessInterface;
-import DAL.DataAccessManager;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "descriptor_servlet", urlPatterns = {"/descriptor"})
 public class descriptor_servlet extends HttpServlet {
 
-    private final DataAccessInterface dataAccess = new DataAccessManager();
+    private final Model model = Model.getInstance();
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -65,8 +63,12 @@ public class descriptor_servlet extends HttpServlet {
             }
 
             // Create a DESCRIPTOR_CONN
-            int id = dataAccess.saveDescriptorConn(name, tableName);
+            int id = model.saveDescriptorConn(name, tableName);
             boolean success = true;
+            
+            if (id < 0) {
+                throw new Exception("The saving of one or more descriptor failed!");
+            }
 
             for (int i = 0; i < types.length; i++) {
                 Descriptor d = new Descriptor();
@@ -77,13 +79,13 @@ public class descriptor_servlet extends HttpServlet {
                 d.setIdType(idTypes[i]);
                 System.out.println("Descriptor " + name + ": " + d.toString());
 
-                if (!dataAccess.saveDescriptor(d)) {
+                if (!model.saveDescriptor(d)) {
                     success = false;
                 }
             }
             
             if (!success) {
-                throw new Exception("The saving of one or two descriptor failed!");
+                throw new Exception("The saving of one or more descriptor failed!");
             }
         } catch (Exception ex) {
             Logger.getLogger(descriptor_servlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -16,27 +16,27 @@ import java.util.List;
  *
  * @author Developer
  */
-public interface DataAccessInterface {
+public interface DALManagerInterface {
 
     //SQL Functions ------------------------------------------------------------
     /**
-     * Retrieve a list of stored configurations
+     * Retrieves a list of stored configurations.
      *
-     * @return
+     * @return A list of SQL configurations.
      */
     public List<SQLConf> getSqlConfigs();
 
     /**
-     * Save a configuration into the H2 database.
+     * Saves a configuration into the H2 database.
      *
      * @param data The configuration that will be saved.
-     * @return True if successful (the number of affected rows is 1), false
-     * otherwise
+     * @return The id of the saved configuration, or -1 if no key was returned
+     * by the database.
      */
-    public boolean saveSqlConfig(SQLConf data);
+    public int saveSqlConfig(SQLConf data);
 
     /**
-     * Deletes a configuration with the specified ID
+     * Deletes a configuration with the specified ID.
      *
      * @param id The id of the configuration that will be deleted
      * @return True if successful, false otherwise.
@@ -45,24 +45,24 @@ public interface DataAccessInterface {
 
     //Descriptor Functions -----------------------------------------------------
     /**
-     * Save a given descriptor to the H2 database
+     * Saves a given descriptor to the H2 database.
      *
      * @param d The descriptor that will be saved
-     * @return True if the descriptor was saved (the number of modified rows is
-     * 1), false otherwise.
+     * @return The id of the saved configuration, or -1 if no key was returned
+     * by the database.
      */
-    public boolean saveDescriptor(Descriptor d);
+    public int saveDescriptor(Descriptor d);
 
     //DescriptorConnection Functions -------------------------------------------
     /**
-     * Retrieve all descriptor connections
+     * Retrieves all descriptor connections.
      *
      * @return A list of descriptor connections
      */
     public List<DescriptorConn> getDescriptorConns();
 
     /**
-     * Return a specific object by ID.
+     * Returns a specific object by ID.
      *
      * @param id ID of the connection.
      * @return The connection with the specific ID if exists, null otherwise.
@@ -70,20 +70,19 @@ public interface DataAccessInterface {
     public DescriptorConn getDescriptorConnByID(int id);
 
     /**
-     * Save a descriptor connection to the database.
+     * Saves a descriptor connection to the database.
      *
-     * @param name The name of the connection.
-     * @param tableName Table name in the SQL database.
+     * @param data The connection that will be saved.
      * @return The ID of the connection, or -1 if no key was returned by the
      * database.
      */
-    public int saveDescriptorConn(String name, String tableName);
+    public int saveDescriptorConn(DescriptorConn data);
 
     //OPC Functions ------------------------------------------------------------
     /**
-     * Retrieve a list of OPC configurations
+     * Retrieves a list of OPC configurations.
      *
-     * @return THe OPC configurations saved in the database.
+     * @return The OPC configurations saved in the database.
      */
     public List<OPCConf> getOpcConfigs();
 
@@ -91,13 +90,13 @@ public interface DataAccessInterface {
      * Saves an OPC connection configuration to the database.
      *
      * @param conf The configuration that will be saved.
-     * @return True if successful (the number of updated rows equals 1), false
-     * otherwise.
+     * @return The id of the saved configuration, or -1 if no key was returned
+     * by the database.
      */
-    public boolean saveOpcConfig(OPCConf conf);
+    public int saveOpcConfig(OPCConf conf);
 
     /**
-     * Deletes a configuration with the specified ID
+     * Deletes a configuration with the specified ID.
      *
      * @param id The id of the configuration that will be deleted
      * @return True if successful, false otherwise.
