@@ -10,6 +10,7 @@ import BE.DescriptorConn;
 import BE.OPCConf;
 import BE.ProcessOutputPrinter;
 import BE.SQLConf;
+import DAL.ConfigurationReader;
 import DAL.DALManager;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +18,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import DAL.DALManagerInterface;
+import java.lang.module.Configuration;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 
 /**
  *
@@ -54,7 +58,9 @@ public class Model {
             System.out.println("OPC: " + opc);
             System.out.println("Process starting");
 
-            ProcessBuilder pb = new ProcessBuilder("java", "-jar", DATA_COLLECTOR_PATH, sql, opc);
+            String path = ConfigurationReader.getPath("../conf/DataCollectorConf.ini");           // Since it is a web app running under tomcat the cwd will be Tomcat/bin
+
+            ProcessBuilder pb = new ProcessBuilder("java", "-jar", path, sql, opc);
 
             ProcessOutputPrinter printer = new ProcessOutputPrinter();
 
